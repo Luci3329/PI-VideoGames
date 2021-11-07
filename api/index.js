@@ -18,11 +18,12 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn } = require('./src/db.js'); // la base de datos
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
+// ** SINCRONIZACIÓN **
+conn.sync({ force: true }).then(() => { // cuidado! cambié el force a false
+  server.listen(3001, () => { // cambié el puerto de 3001 a 3002 para probar ambos (front:3001 y back: 3002)
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
