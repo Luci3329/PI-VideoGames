@@ -1,0 +1,10 @@
+.number {
+    list-style: none;
+    display: inline-block;
+    background-color: chartreuse;
+}
+
+.number p {
+    cursor: pointer;
+    padding: 8px;
+}
