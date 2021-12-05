@@ -1,5 +1,3 @@
-//require ('dotenv').config();
-//const { API_KEY } = process.env;
 import axios from 'axios';
 
 // store -> contiene el estado de la aplicación
@@ -33,25 +31,37 @@ export function orderByGame (payload){
     }
 }
 
-export function listGenres() {
+
+export function getNameGame(game){
+    return async function(dispatch){
+        try{
+            var json = await axios.get('http://localhost:3001/videogames?name='+game, {});
+            return dispatch({
+                type : 'GET_NAME_GAME',
+                payload : json.data
+            })
+        } catch (error){
+            console.log(error)
+        }
+    }
+}
+
+export function postVideogames(payload){
+    return async function(dispatch){
+        const response = await axios.post('http://localhost:3001/videogame', payload);
+        return response;
+    }
+}
+
+export function listInfo(){
     return async function (dispatch) {
-        var g = await axios.get('http://localhost:3001/genres', {});
-        return dispatch ({
-            type: 'LIST_GENRES',
-            payload: g.data   // [ {} {} {} ... ]     
-
-        }) // con ésta acción me traje la lista de géneros para mostrar en las <option>
-
-    }
-}
-
-export function genresFilter (payload){
-    return {
-        type : 'GENRES_FILTER' ,
-        payload
-    }
-}
+        //console.log("Get platforms/genre pedido");
+        var p = await axios.get('http://localhost:3001', {})
+          return dispatch({
+            type: "LIST_INFO",
+            payload: p.data,
+          });
+        };
+      }; // me trae { genres : [ ... ], platforms : [ ... ]}
     
-
-   
 

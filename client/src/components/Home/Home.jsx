@@ -3,10 +3,11 @@ import { useEffect } from 'react'; //useEffect llena el estado cuando se monta e
 import { useState } from 'react';
 // useState -> funcion que nos devuelve un array con dos elem:  [state, metodo para mutarlo] 
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideogames, filterCreated, orderByGame, listGenres, genresFilter } from '../../actions';
+import { getVideogames, filterCreated, orderByGame } from '../../actions';
 import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
+import SearchBar from '../SearchBar/SearchBar.jsx';
 
 
 export default function Home() {
@@ -19,10 +20,9 @@ export default function Home() {
     //console.log(allVideogames)
     //console.log(state.videogames)
 
-    const allGenres = useSelector( state => state.genres )
-    //console.log(allGenres);
-    const filterByGenre = useSelector( state => state.filterGenres)
-    const [filter, setFilter] = useState('')
+    const genres = useSelector( state => state.genres )
+    
+    
 
     // *********** ORDENAMIENTO ASC - DES  ****************
     const [order, setOrder] = useState('')
@@ -49,6 +49,11 @@ export default function Home() {
     }, [dispatch]) // ese 2do arg [] es de lo q depende la ejecución del dispatch (condición/dependencias)
     // a q estado debe hacerle 'seguimiento' -> ComponentDidUpdat -> ACTUALIZACIÓN  
 
+    function handleClick(e){
+        e.preventDefault();
+        dispatch(getVideogames());
+    }
+    
     function handleFilterByCreated(e) {
         dispatch(filterCreated(e.target.value))
     };
@@ -60,26 +65,21 @@ export default function Home() {
         setOrder(`Ordenado ${e.target.value}`)
     };
 
-    useEffect( () => {  // para el renderizado de la lista de géneros
-        dispatch(listGenres())
-    }, [dispatch])
     
-    function handleFilterGenres(e) {
-        dispatch(genresFilter(e.target.value))
-        setPagActual(1);
-        setFilter(`Filtrado ${e.target.value}`)
-    }
+    
+   
+    
 
     return (
         <div>
 
-            <Link to='/newVideogame'>New Videogame</Link>
+            <Link to='/videogame'>New Videogame</Link>
             <h1>Videogames</h1>
-            <button>
+            <button onClick= { e => handleClick(e) }>
                 Volver a cargar todos los Videojuegos
             </button>
 
-
+            <div>
             <select onChange={e => handleSort(e)}>
                 <option value='asc'>Ascendente</option>
                 <option value='desc'>Descendente</option>
@@ -91,19 +91,22 @@ export default function Home() {
                 <option value='Created'>Creados</option>
             </select>
 
-            <select onChange={e => handleFilterGenres(e)}>
+            <select>
             <option value='All'>All</option>
-                {allGenres &&
-                    allGenres.map( el => (
+                {genres &&
+                    genres.map( el => (
                         <option value={el}>{el}</option>
                     ))}
             </select>
+            </div>
 
             <Paginado
                 gamesPorPag={gamesPorPag}
                 allVideogames={allVideogames.length}
                 paginado={paginado}
             />
+
+            <SearchBar />
 
             {
                 gamesPagActual?.map((el) => {

@@ -1,4 +1,3 @@
-
 // La función del REDUCER es manipular el state y su contenido 
 // Siempre retorna un nuevo state y le avisa del cambio a los componentes
 
@@ -6,7 +5,7 @@ const initialState = {
     videogames: [],  // estado q renderizo
     allVideogames: [],  // estado q siempre tiene TODO -> para q no me filtre sobre lo filtrado
     genres: [],
-    filterGenres: [],
+    
     platforms: []
 }
 
@@ -51,34 +50,32 @@ function rootReducer(state = initialState, action) {   // acá van a ir todas mi
                 videogames: sortedArr
             }
 
-        case 'LIST_GENRES':
-
-            //const arrGenres = state.genres
-            //const genresFilter = action.payload === 'All' ? arrGenres :
-            //arrGenres.filter(el => el.name === action.payload)
-
-            const genresFilter = action.payload.map(el => el.name)
-
-
+       
+        case 'GET_NAME_GAME':
             return {
                 ...state,
-                genres: genresFilter
+                videogames: action.payload
             }
+ 
 
-
-        case 'GENRES_FILTER':
-            //const genres = state.genres
-            const allGames = state.allVideogames
-            const gamesFiltered = allGames.map(el => el.genres.map(g => g === action.payload))
-
+        case 'LIST_INFO': // me traigo todo de mi ruta getInfo
+            const allGenres = action.payload.genres;//.map(genre => genre.name);
+            const allPlatforms = action.payload.platforms;
             return {
                 ...state,
-                filterGenres: gamesFiltered
+                genres: allGenres,
+                platforms: allPlatforms
             }
 
+        case 'POST_VIDEOGAMES' :
+            return {
+                ...state   // no hacemos nada aquí xq creamos en una nueva ruta
+            }    
+            
         default:
             return state;
     }
 }
 
 export default rootReducer;
+
