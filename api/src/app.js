@@ -23,6 +23,7 @@ server.use((req, res, next) => { // configuramos CORS de forma manual
 });
 
 server.use('/', routes); // escucha en / lo q venga desde routes/index
+//server.use('', routes);
 
 // Error catching endware.   **** manejo de errores ** no tocar más nada **
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
@@ -31,5 +32,15 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
+
+/* server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+  if (req.originalUrl.includes('favicon.ico')) {
+    res.status(204).end()
+  }
+  next();  // AGREGADO POR DESESPERACIÓN 
+}); */
+
+
+
 
 module.exports = server;

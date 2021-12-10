@@ -19,11 +19,12 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js'); // la base de datos
+// const {getGenres } = require('./src/controllers/genres/genre');
 
 // Syncing all the models at once.
 // ** SINCRONIZACIÓN **
-conn.sync({ force: true }).then(() => { // cuidado! cambié el force a false
-  server.listen(3001, () => { // cambié el puerto de 3001 a 3002 para probar ambos (front:3001 y back: 3002)
+conn.sync({ force: false }).then(() => { // cuidado! 
+  server.listen(3001, () => { // el back y el front deben andar en puertos diferentes y ambos al tiempo
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
-});
+}); // .then( () => getGenres() )
