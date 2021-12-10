@@ -3,7 +3,7 @@ import { useEffect } from 'react'; //useEffect llena el estado cuando se monta e
 import { useState } from 'react';
 // useState -> funcion que nos devuelve un array con dos elem:  [state, metodo para mutarlo] 
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideogames, filterCreated, orderByGame } from '../../actions';
+import { getVideogames, filterCreated, orderByGame, listGenres, filterByGenres } from '../../actions';
 import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
@@ -20,9 +20,12 @@ export default function Home() {
     //console.log(allVideogames)
     //console.log(state.videogames)
 
-    const genres = useSelector( state => state.genres )
+    const genress = useSelector( state => state.genres )
+    //console.log(genress)
     
-    
+    /* const [ genre, setGenre ] = useState( {
+        genres : []
+    }) */
 
     // *********** ORDENAMIENTO ASC - DES  ****************
     const [order, setOrder] = useState('')
@@ -49,6 +52,10 @@ export default function Home() {
     }, [dispatch]) // ese 2do arg [] es de lo q depende la ejecución del dispatch (condición/dependencias)
     // a q estado debe hacerle 'seguimiento' -> ComponentDidUpdat -> ACTUALIZACIÓN  
 
+    useEffect(() => {  // cuando el componente se monte -> traigo todo
+        dispatch(listGenres())
+    }, []); 
+
     function handleClick(e){
         e.preventDefault();
         dispatch(getVideogames());
@@ -67,6 +74,18 @@ export default function Home() {
 
     
     
+     function handleFilterByGenres(e) {
+        dispatch(filterByGenres(e.target.value))
+        /* setGenre({
+            ...genre,
+            genres: [...genre.genres, e.target.value]
+        }) */
+    }; 
+
+   /*  function handleFilterGenre(e){
+        dispatch(filterByGenres(e))
+    } 
+     */
    
     
 
@@ -91,11 +110,12 @@ export default function Home() {
                 <option value='Created'>Creados</option>
             </select>
 
-            <select>
+            <select onChange= { e => handleFilterByGenres(e) }>
             <option value='All'>All</option>
-                {genres &&
-                    genres.map( el => (
-                        <option value={el}>{el}</option>
+                {genress &&
+                    genress.map( el => (
+                        <option 
+                        value={el}>{el}</option>
                     ))}
             </select>
             </div>

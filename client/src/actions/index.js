@@ -7,61 +7,93 @@ import axios from 'axios';
 // disptach -> acción -> reduce (nuevo store)
 // payload -> información para poder modificar el store
 
-export function getVideogames(){
-    return async function (dispatch){
-        var json = await axios.get( 'http://localhost:3001/videogames', {}); 
-        return dispatch ({
-            type : 'GET_VIDEOGAMES',
-            payload : json.data
+
+
+
+
+export function getVideogames() {
+    return async function (dispatch) {
+        var json = await axios.get('http://localhost:3001/videogames', {});
+        return dispatch({
+            type: 'GET_VIDEOGAMES',
+            payload: json.data
         })
     }
 }
 
-export function filterCreated (payload){
+export function filterCreated(payload) {
     return {
-        type : 'FILTER_CREATED' ,
+        type: 'FILTER_CREATED',
         payload
     }
 }
 
-export function orderByGame (payload){
+export function orderByGame(payload) {
     return {
-        type : 'ORDER_BY_GAME' ,
+        type: 'ORDER_BY_GAME',
+        payload
+    }
+}
+
+export function listGenres() {
+    return async function (dispatch) {
+        //console.log("Get platforms/genre pedido");
+        var p = await axios.get('http://localhost:3001/info', {})
+        return dispatch({
+            type: "LIST_GENRES",
+            payload: p.data
+        });
+    };
+}; // me trae { genres : [ ... ], platforms : [ ... ]}
+
+export function filterByGenres(payload) {
+    return {
+        type: 'FILTER_BY_GENRES',
         payload
     }
 }
 
 
-export function getNameGame(game){
-    return async function(dispatch){
-        try{
-            var json = await axios.get('http://localhost:3001/videogames?name='+game, {});
+
+export function getNameGame(game) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get('http://localhost:3001/videogames?name=' + game, {});
             return dispatch({
-                type : 'GET_NAME_GAME',
-                payload : json.data
+                type: 'GET_NAME_GAME',
+                payload: json.data
             })
-        } catch (error){
+        } catch (error) {
             console.log(error)
         }
     }
 }
 
-export function postVideogames(payload){
-    return async function(dispatch){
+export function postVideogames(payload) {
+    return async function (dispatch) {
         const response = await axios.post('http://localhost:3001/videogame', payload);
         return response;
     }
 }
 
-export function listInfo(){
+export function getDetail(id) {
     return async function (dispatch) {
-        //console.log("Get platforms/genre pedido");
-        var p = await axios.get('http://localhost:3001', {})
-          return dispatch({
-            type: "LIST_INFO",
-            payload: p.data,
-          });
-        };
-      }; // me trae { genres : [ ... ], platforms : [ ... ]}
-    
+        try {
+            var json = await axios.get('http://localhost:3001/videogame/' + id, {});
+            return dispatch({                        
+                type: "GET_DETAIL",
+                payload: json.data
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+
+
+
+
+
 

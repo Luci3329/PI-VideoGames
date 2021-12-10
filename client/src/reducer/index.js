@@ -5,8 +5,9 @@ const initialState = {
     videogames: [],  // estado q renderizo
     allVideogames: [],  // estado q siempre tiene TODO -> para q no me filtre sobre lo filtrado
     genres: [],
-    
-    platforms: []
+    genresFilter: [],
+    platforms: [],
+    detail: []
 }
 
 function rootReducer(state = initialState, action) {   // acá van a ir todas mis acciones
@@ -50,28 +51,47 @@ function rootReducer(state = initialState, action) {   // acá van a ir todas mi
                 videogames: sortedArr
             }
 
-       
+
+        case 'LIST_GENRES': // me traigo todo de mi ruta getInfo
+            //const allGenres = action.payload;//.map(genre => genre.name);
+            //const allPlatforms = action.payload.platforms;
+
+            return {
+                ...state,
+                genres: action.payload.genres,
+                platforms: action.payload.platforms
+            }
+
+        case 'FILTER_BY_GENRES': // el valor del select es lo q le llega a mi acción x payload
+            //const videogames = state.videogames
+            const genresFilter = action.payload === 'All' ? state.allVideogames : state.allVideogames.filter(el => el.genres.includes(action.payload))
+            return {
+                ...state,
+                allVideogames: genresFilter
+            }
+
+            //const allGs = state.allGenres // si recibo 'All' muestro todos, si marcan alguno -> filtro ese alguno
+            //const genresFilter = action.payload === 'All' ? allGs : allGs.filter(el => el.state === action.payload)
+            //const genreSS = action.payload.genre.map(genre=>genre.name);
+
         case 'GET_NAME_GAME':
             return {
                 ...state,
                 videogames: action.payload
             }
- 
 
-        case 'LIST_INFO': // me traigo todo de mi ruta getInfo
-            const allGenres = action.payload.genres;//.map(genre => genre.name);
-            const allPlatforms = action.payload.platforms;
-            return {
-                ...state,
-                genres: allGenres,
-                platforms: allPlatforms
-            }
-
-        case 'POST_VIDEOGAMES' :
+        case 'POST_VIDEOGAMES':
             return {
                 ...state   // no hacemos nada aquí xq creamos en una nueva ruta
-            }    
-            
+            }
+
+        case "GET_DETAIL":
+            return {
+                ...state,
+                detail: action.payload
+            }
+
+
         default:
             return state;
     }

@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postVideogames, listInfo } from '../../actions';
+import { postVideogames, listGenres } from '../../actions';
 
 export default function NewGame() {
 
     const dispatch = useDispatch()
     const history = useHistory()   // para redireccionar una vez creado el juego -> voy a /home
 
-    const genres = useSelector( state => state.genres )
-    const platforms = useSelector( state => state.platforms )
+    const genres = useSelector(state => state.genres)
+    //console.log(genres) // arreglo de strings
+    const platforms = useSelector(state => state.platforms)
+    //console.log(platforms)
 
     const [input, setInput] = useState({
         name: '',
         description: '',
-        Released: '',
+        background_image: '',
+        releaseDate: '',
         rating: '',
-        genres: [...genres],
-        platforms: [...platforms]
+        platforms: '',
+        genres: ''
+
     })
 
-    useEffect(() => {  // cuando el componente se monte -> traigo todo
-        dispatch(listInfo())
-    }, []);
-    //lo saqué xq me traía problemas con la acción ListInfo y además rompía el SearchBar 
 
     // acá guardo las cosas q el usuario va escribiendo -> estado local input
     function handleChange(e) {
@@ -33,29 +33,64 @@ export default function NewGame() {
         }) // DINÁMICO -> va a ir tomando los valores de los inputs y los va modificando según lo escrito
     }
 
-    function handleSelect(e) { // tengo 2 select : genres y platforms -> PUEDE FALLAR DECÍA TUSAN!
+    function handleSelectPlat(e) { // tengo 2 select : genres y platforms -> PUEDE FALLAR DECÍA TUSAN!
         setInput({
             ...input,
-            genres: [...input.genres, e.target.value],
             platforms: [...input.platforms, e.target.value]
+            
         })
+            //platforms: [...input.platforms, e.target.value],
+            //genres: [...input.genres, e.target.value]
     }
+
+    
+    function handleSelectGen(e) { // tengo 2 select : genres y platforms -> PUEDE FALLAR DECÍA TUSAN!
+        setInput({
+            ...input,
+            
+            genres: [...input.genres, e.target.value]
+        })
+            //platforms: [...input.platforms, e.target.value],
+            //genres: [...input.genres, e.target.value]
+    }
+
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(input);
+        //console.log(input);
         dispatch(postVideogames(input))
         alert('Juego Creado Exitosamente!')
         setInput({   // para q al terminar me deje todos los input en blanco nuevamente
             name: '',
             description: '',
-            Released: '',
+            background_image: '',
+            releaseDate: '',
             rating: '',
-            genres: genres,
-            platforms: platforms
+            platforms: '',
+            genres: ''
+
         })
         history.push('/home') // useHistory -> me redirecciona al Home
     }
+
+    function handleDeletePlatform(el) {
+        setInput({
+            ...input,
+            platforms: input.platforms.filter(platform => platform !== el)
+        })
+    }
+
+    function handleDeleteGenre(el) {
+        setInput({
+            ...input,
+            genres: input.genres.filter(genre => genre !== el)
+        })
+    }
+
+    useEffect(() => {  // cuando el componente se monte -> traigo todo
+        dispatch(listGenres())
+    }, []);
+    //lo saqué xq me traía problemas con la acción ListInfo y además rompía el SearchBar 
 
 
     return (
@@ -66,7 +101,7 @@ export default function NewGame() {
 
             <form onSubmit={e => handleSubmit(e)}>
                 <div>
-                    <label>Nombre:</label>
+                    <label>Nombre </label>
                     <input
                         type='text'
                         value={input.name}
@@ -75,55 +110,101 @@ export default function NewGame() {
                 </div>
 
                 <div>
-                    <label>Descripcion:</label>
+                    <label>Descripcion </label>
                     <input
                         type='text'
                         value={input.description}
-                        name='descripcion'
+                        name='description'
                         onChange={e => handleChange(e)} />
                 </div>
 
                 <div>
-                    <label>Fecha de Lanzamiento:</label>
+                    <label>Imagen </label>
                     <input
-                        type='date'
-                        value={input.Released}
-                        name='descripcion'
+                        type='text'
+                        value={input.background_image}
+                        name='background_image' 
                         onChange={e => handleChange(e)} />
                 </div>
 
                 <div>
-                    <label>Rating:</label>
+                    <label>Fecha de Lanzamiento </label>
+                    <input
+                        type='text'
+                        placeholder='dd - mm - aaaa'
+                        autoComplete="off"
+                        value={input.releaseDate}
+                        name='releaseDate'
+                        onChange={e => handleChange(e)} />
+                </div>
+
+                <div>
+                    <label>Rating </label>
                     <input
                         type='number'
+                        placeholder="5.0"
+                        step="0.1"
+                        min='0'
+                        max='5'
                         value={input.rating}
                         name='rating'
                         onChange={e => handleChange(e)} />
                 </div>
 
-                <select onChange={e => handleSelect(e)}>
+                <div>
+                    <label>Plataforma/s </label>
+                    <select id="platforms" onClick={e => { handleSelectPlat(e) }}>
+                        <option selected value= '' > </option>
                     
-                    {
-                        input.genres.map(g => {
-                            <option value={g.name}>{g.name}</option>
-                        })
-                    }
-                </select >
-                <ul> <li> {input.genres.map(el => el + ' - ')}</li> </ul>
+                        {platforms &&
+                            platforms.map((platform) => (
+                                <option
+                                    value={platform}
+                                    
+                                    name="platform"
+                                > {platform} </option>
+                            ))}
+                    </select>
 
-                <select onChange={e => handleSelect(e)}>
-                    
-                    {
-                        input.platforms.map(p => {
-                            <option value={p.name}>{p.name}</option>
-                        })
-                    }
-                </select>
-                <ul> <li> {input.platforms.map(el => el + ' - ')}</li> </ul>
+                </div>
+
+                <div>
+                    <label>Género/s </label>
+                    <select id="genres" onClick={e => { handleSelectGen(e) }}>
+                    <option selected value= '' > </option>
+
+                        {genres &&
+                            genres.map((genre) => (
+                                <option
+                                    value={genre}
+                                    
+                                    name="genres"
+                                > {genre} </option>
+                            ))}
+                    </select>
+                </div>
 
                 <button type='submit'>Crear Juego</button>
 
             </form>
+
+            {input.genres &&
+                input.genres.map(el =>
+                    <div className='divGenres'>
+                        <p>{el}</p>
+                        <button className='boton X'
+                            onClick={() => handleDeleteGenre(el)} > X </button>
+                    </div>
+                )}
+
+            {input.platforms &&
+                input.platforms.map(el =>
+                    <div className='divPlatforms'>
+                        <p>{el}</p>
+                        <button className='boton X'
+                            onClick={() => handleDeletePlatform(el)} > X </button>
+                    </div>
+                )}
 
 
         </div>
