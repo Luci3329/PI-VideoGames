@@ -18,8 +18,8 @@ function App() {
       <Route exact path='/' component= {LandingPage} />
       <Route path='/home' component= {Home} />
       
-      <Route path='/videogame' component= {NewGame} />
-      <Route path='/home/:id' component= {Detail} />
+      <Route exact path='/videogame' component= {NewGame} />
+      <Route exact path='/videogame/:id' component= {Detail} />
       
       
       </Switch>

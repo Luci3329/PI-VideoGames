@@ -1,0 +1,20 @@
+.container{
+    box-sizing: border-box;
+}
+
+.fotop{
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 170px;
+}
+
+.bp{
+    background-color: rgba(220, 232, 235, 0.4);
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 6px;
+    width: 160px;
+    border-radius: 13px;
+    cursor: pointer;
+}  

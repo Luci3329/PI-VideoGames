@@ -1,18 +1,30 @@
 import React from 'react';
+import './Card.css'
 
-export default function Card( {name, background_image, rating, genres }){
+export default function Card({ name, background_image, rating, genres }) {
     // no necesito traerme ningún estado xq ya tengo la lógica en el Home
 
-    return(
+    return (
 
-        <div>
-            <h3>{ name }</h3>
-            
-            <img src = { background_image } alt= 'Img not found' width='200px' height='250px' />
-            <h5>Rating : { rating }</h5>
-            <h5>Género : { genres }</h5>
+
+
+
+        <div className='card'>
+
+            <h2 className='namet' >{name}</h2>
+            <img className='img' src={background_image} alt={name} />
+            <h5>{genres.map(el => el + ' * ')}</h5>
+
         </div>
+
+
+
+
     )
 
 }
+
+
+
+
 

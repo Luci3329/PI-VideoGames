@@ -1,0 +1,22 @@
+.ip{
+    background-color: rgb(117 ,128, 131 ,0.2);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 6px;
+    width: 260px;
+    border-radius: 13px;
+    cursor: pointer;
+}
+
+.bp{
+    background-color: rgb(117 ,128, 131 ,0.2);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 6px;
+    width: 260px;
+    border-radius: 13px;
+    cursor: pointer;
+}
+

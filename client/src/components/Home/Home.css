@@ -1,0 +1,30 @@
+.bp{
+    background-color: rgb(117 ,128, 131 ,0.2);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 6px;
+    width: 260px;
+    border-radius: 13px;
+    cursor: pointer;
+}
+
+
+.cardHome{
+    display:grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 17rem);
+    gap: 4rem;
+    margin-top: 2rem;
+    
+    
+}
+
+
+
+.cardsContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}

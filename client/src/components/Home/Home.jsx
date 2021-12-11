@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar.jsx';
+import './Home.css';
 
 
 export default function Home() {
@@ -20,9 +21,9 @@ export default function Home() {
     //console.log(allVideogames)
     //console.log(state.videogames)
 
-    const genress = useSelector( state => state.genres )
+    const genress = useSelector(state => state.genres)
     //console.log(genress)
-    
+
     /* const [ genre, setGenre ] = useState( {
         genres : []
     }) */
@@ -54,13 +55,13 @@ export default function Home() {
 
     useEffect(() => {  // cuando el componente se monte -> traigo todo
         dispatch(listGenres())
-    }, []); 
+    }, []);
 
-    function handleClick(e){
+    function handleClick(e) {
         e.preventDefault();
         dispatch(getVideogames());
     }
-    
+
     function handleFilterByCreated(e) {
         dispatch(filterCreated(e.target.value))
     };
@@ -72,75 +73,87 @@ export default function Home() {
         setOrder(`Ordenado ${e.target.value}`)
     };
 
-    
-    
-     function handleFilterByGenres(e) {
+
+
+    function handleFilterByGenres(e) {
         dispatch(filterByGenres(e.target.value))
         /* setGenre({
             ...genre,
             genres: [...genre.genres, e.target.value]
         }) */
-    }; 
+    };
 
-   /*  function handleFilterGenre(e){
-        dispatch(filterByGenres(e))
-    } 
-     */
-   
-    
+    /*  function handleFilterGenre(e){
+         dispatch(filterByGenres(e))
+     } 
+      */
+
+
 
     return (
-        <div>
-
-            <Link to='/videogame'>New Videogame</Link>
-            <h1>Videogames</h1>
-            <button onClick= { e => handleClick(e) }>
-                Volver a cargar todos los Videojuegos
-            </button>
+        <div className='home'>
 
             <div>
-            <select onChange={e => handleSort(e)}>
-                <option value='asc'>Ascendente</option>
-                <option value='desc'>Descendente</option>
-            </select>
-
-
-            <select onChange={e => handleFilterByCreated(e)}>
-                <option value='All'>Todos</option>
-                <option value='Created'>Creados</option>
-            </select>
-
-            <select onChange= { e => handleFilterByGenres(e) }>
-            <option value='All'>All</option>
-                {genress &&
-                    genress.map( el => (
-                        <option 
-                        value={el}>{el}</option>
-                    ))}
-            </select>
+                <Link to='/videogame'><button className="bp">Crea tu Videojuego!</button></Link>
             </div>
 
-            <Paginado
-                gamesPorPag={gamesPorPag}
-                allVideogames={allVideogames.length}
-                paginado={paginado}
-            />
+            <div>
+                <button className="bp" onClick={e => handleClick(e)}>
+                    Volver a cargar
+                </button>
+            </div>
 
-            <SearchBar />
 
-            {
-                gamesPagActual?.map((el) => {
-                    return (
-                        <div>
-                            <Link to={'/home/' + el.id} >
-                                <Card name={el.name} background_image={el.background_image} rating={el.rating} genres={el.genres} key={el.id} />
-                            </Link>
-                        </div>
-                    );
+            <div className='home2'>
+                <select className="bp" onChange={e => handleSort(e)}>
+                    <option value='asc'>Ascendente</option>
+                    <option value='desc'>Descendente</option>
+                </select>
 
-                })
-            }
+
+                <select className="bp" onChange={e => handleFilterByCreated(e)}>
+                    <option value='All'>Todos</option>
+                    <option value='Created'>Creados</option>
+                </select>
+
+                <select className="bp" onChange={e => handleFilterByGenres(e)}>
+                    <option value='All'>Todos</option>
+                    {genress &&
+                        genress.map(el => (
+                            <option
+                                value={el}>{el}</option>
+                        ))}
+                </select>
+
+
+                <Paginado
+                    gamesPorPag={gamesPorPag}
+                    allVideogames={allVideogames.length}
+                    paginado={paginado}
+                />
+
+                <SearchBar />
+
+            </div>
+
+            <div className='cardHome'>
+
+                {
+                    gamesPagActual?.map((el) => {
+                        return (
+                            <div className='cardsContainer'>
+                                <Link to={'/videogame/' + el.id} >
+                                    <Card name={el.name} background_image={el.background_image} rating={el.rating} genres={el.genres} key={el.id} />
+                                </Link>
+                            </div>
+                        );
+
+                    })
+                }
+
+            </div>
 
         </div>
     )
 }
+// display flex para las card

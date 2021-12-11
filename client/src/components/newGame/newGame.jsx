@@ -17,7 +17,7 @@ export default function NewGame() {
         name: '',
         description: '',
         background_image: '',
-        releaseDate: '',
+        released: '',
         rating: '',
         platforms: '',
         genres: ''
@@ -64,7 +64,7 @@ export default function NewGame() {
             name: '',
             description: '',
             background_image: '',
-            releaseDate: '',
+            released: '',
             rating: '',
             platforms: '',
             genres: ''
@@ -133,8 +133,8 @@ export default function NewGame() {
                         type='text'
                         placeholder='dd - mm - aaaa'
                         autoComplete="off"
-                        value={input.releaseDate}
-                        name='releaseDate'
+                        value={input.released}
+                        name='released'
                         onChange={e => handleChange(e)} />
                 </div>
 
