@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    releaseDate : {
+    released : {
       type: DataTypes.STRING
     },
 

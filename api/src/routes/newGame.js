@@ -6,7 +6,7 @@ const router = Router();
 
 
 router.post('/', async (req, res) => { // viene todo del form del front x body
-    const { name, description, background_image, releaseDate, rating, platforms, createdInDb, genres } = req.body;
+    const { name, description, background_image, released, rating, platforms, createdInDb, genres } = req.body;
 
     // **************** VER VERIFICACIÓN ********************
 
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => { // viene todo del form del front x body
             name,
             description,
             background_image,
-            releaseDate,
+            released,
             rating,
             platforms: platforms, //.map(p => p.platform.name) AHORA son string 
             createdInDb // seteada en true -> en las pruebas no la paso, pero me tiene q llegar
