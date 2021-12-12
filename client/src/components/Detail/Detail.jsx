@@ -20,9 +20,6 @@ export default function Detail(props) {
 
         <div className='detail'>
 
-            <Link to='/home'>
-                <button>Volver</button>
-            </Link>
 
             {
                 myGame ?
@@ -32,21 +29,28 @@ export default function Detail(props) {
                         <h1> {myGame.name}</h1>
 
                         <div className='divNuevo'>
-                        <img src={myGame.background_image} width="250" height="150px" />
-                        <div className='pdes'><p>{myGame.description}</p></div>
+                            <img src={myGame.background_image} width="250" height="150px" />
+                            <div className='pdes'><p>{myGame.description.replace(/(<([^>]+)>)/gi, "")}</p></div>
                         </div>
 
-                        <p>Fecha de Lanzamiento {myGame.released}</p>
+                        <p><h4>Fecha de Lanzamiento</h4> <h5>{myGame.released}</h5></p>
                         <p>Rating {myGame.rating}</p>
                         <p>Plataformas {myGame.platforms}</p>
                         <p>Géneros {myGame.genres}</p>
-                        
+
 
                     </div> : <p>Loading ...</p>
             }
+
+
+            <Link to='/home'>
+                <button className='vr'>Volver</button>
+            </Link>
 
         </div>
 
 
     )
 }
+
+//.replace(/(<([^>]+)>)/gi, "")

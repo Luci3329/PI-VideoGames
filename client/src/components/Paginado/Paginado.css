@@ -1,8 +1,9 @@
 .number {
     list-style: none;
     display: inline-block;
-    
-    color: white;
+    border-radius: 10px;
+    background: linear-gradient(
+        180deg,#fd867d,#b1305c);
     font-weight: 800;
 }
 

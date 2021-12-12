@@ -93,21 +93,28 @@ export default function Home() {
     return (
         <div className='home'>
 
-            <h1 className='Videogames'>Videogames</h1>
 
-            <nav>
+            <div className='barraPrincipal'>
                 
-                    <Link to='/videogame'><button className="bp">Crea tu Videojuego!</button></Link>
-               
-
-              
+                <div className='volver'>
                     <button className="bp_volver" onClick={e => handleClick(e)}>
                         Volver a cargar
                     </button>
-               
-            </nav>
+                </div>
+
+                <div className='search'>
+                    <SearchBar />
+                </div>
+
+                <div className='creacion'>
+                    <Link to='/videogame'><button className="bp">Crea tu Videojuego!</button></Link>
+                </div>
 
 
+            </div>
+
+
+                <h1 className='Videogames'>Videogames</h1>
 
 
             <div className='home2'>
@@ -138,7 +145,7 @@ export default function Home() {
                     paginado={paginado}
                 />
 
-                <SearchBar />
+
 
             </div>
 

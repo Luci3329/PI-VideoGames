@@ -7,9 +7,9 @@
     font-size: 14px;
     color: #fff;
     font-weight: 600;
-   
-    margin: 14px;
-    margin-top: 50px;
+   cursor: pointer;
+    margin: 30px;
+    margin-top: 36px;
 }
 
 label{
@@ -19,7 +19,9 @@ label{
 
 .crea{
     color: white;
-    
+    background: linear-gradient(
+        180deg,#fd867d,#b1305c);
+        border-radius: 15px;
     font-weight: 900;
     margin: revert;
     font-size: -webkit-xxx-large; 
