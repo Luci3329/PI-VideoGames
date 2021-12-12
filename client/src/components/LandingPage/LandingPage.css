@@ -8,13 +8,18 @@
     margin-top: 170px;
 }
 
-.bp{
-    background-color: rgba(220, 232, 235, 0.4);
-    color: white;
-    font-weight: bold;
-    font-size: 10px;
-    padding: 6px;
-    width: 160px;
-    border-radius: 13px;
-    cursor: pointer;
-}  
+.boton .bp{
+    width: auto;
+    min-width: 150px;
+    padding: 5px 10px;
+    background-color: hsla(0,0%,100%,.07);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+}    
+
+
+
+
+

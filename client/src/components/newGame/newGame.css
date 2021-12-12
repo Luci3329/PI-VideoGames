@@ -1,0 +1,28 @@
+.boton{
+    width: auto;
+    min-width: 150px;
+    padding: 5px 10px;
+    background-color: hsla(0,0%,100%,.07);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+   
+    margin: 14px;
+    margin-top: 50px;
+}
+
+label{
+    color: white;
+    font-weight: 600;
+}
+
+.crea{
+    color: white;
+    
+    font-weight: 900;
+    margin: revert;
+    font-size: -webkit-xxx-large; 
+    margin: 30px;
+    margin-top: auto;
+}

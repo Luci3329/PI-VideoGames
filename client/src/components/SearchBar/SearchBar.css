@@ -1,22 +1,19 @@
-.ip{
-    background-color: rgb(117 ,128, 131 ,0.2);
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    padding: 6px;
-    width: 260px;
-    border-radius: 13px;
-    cursor: pointer;
+.input{
+    width: 50%;
+    
+    height: 23px;
+    border-radius: 24px;
+    pointer-events:painted;
+    background-color: transparent;
 }
 
-.bp{
-    background-color: rgb(117 ,128, 131 ,0.2);
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    padding: 6px;
-    width: 260px;
-    border-radius: 13px;
-    cursor: pointer;
+.x {
+    width: 68px;
+    min-width: 55px;
+    padding: 5px 10px;
+    background-color: hsla(0,0%,100%,.07);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
 }
-

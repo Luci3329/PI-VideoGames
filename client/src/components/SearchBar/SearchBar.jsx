@@ -14,20 +14,20 @@ export default function SearchBar (){
     }
 
     function handleSubmit(e){
-        e.preventDefault()
-        dispatch(getNameGame(game))
+        e.preventDefault();
+        dispatch(getNameGame(game));
         setGame('');   // NO FUNCIONA, no me lo borra cuando termina de buscar -> VER!!!
     }
 
     return (
 
-        <div className="bp">
-            <input className='bp'
+        <div className="search">
+            <input className='input'
             type='text'
-            placeholder='Tu Juego...'
+            placeholder='           Cuál es tu juego?  ... '
             onChange={ e => handleInputChange(e) } />
 
-            <button className='bp'
+            <button className='x'
             type='submit'
             onClick={ e => handleSubmit(e) }>Buscar</button>
 

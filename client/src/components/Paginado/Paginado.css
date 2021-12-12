@@ -1,7 +1,9 @@
 .number {
     list-style: none;
     display: inline-block;
-    background-color: chartreuse;
+    
+    color: white;
+    font-weight: 800;
 }
 
 .number p {

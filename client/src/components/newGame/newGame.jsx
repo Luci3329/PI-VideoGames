@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postVideogames, listGenres } from '../../actions';
+import './NewGame.css';
 
 export default function NewGame() {
 
@@ -96,8 +97,8 @@ export default function NewGame() {
     return (
 
         <div>
-            <Link to='/home'> <button>Volver</button></Link>
-            <h1>Crea tu Videojuego!</h1>
+            <Link to='/home'> <button className='boton'>Volver</button></Link>
+            <h2 className='crea'>Crea tu Videojuego!</h2>
 
             <form onSubmit={e => handleSubmit(e)}>
                 <div>
@@ -184,7 +185,7 @@ export default function NewGame() {
                     </select>
                 </div>
 
-                <button type='submit'>Crear Juego</button>
+                <button className='boton' type='submit'>Crear Juego</button>
 
             </form>
 

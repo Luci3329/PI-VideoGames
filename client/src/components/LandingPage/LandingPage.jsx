@@ -9,15 +9,21 @@ export default function LandingPage() {
         <div className='container'>
          
          <img className='fotop' src={img} alt="hola" />
+
+         
  
 
-            <div className='landing'>
+            <div className='boton'>
                 
                 <Link to='/home'>
                     <button className="bp">Home</button>
                 </Link>
             </div>
+
+            
+
+
         </div>
     )
 }
-  
+    

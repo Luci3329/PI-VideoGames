@@ -93,30 +93,36 @@ export default function Home() {
     return (
         <div className='home'>
 
-            <div>
-                <Link to='/videogame'><button className="bp">Crea tu Videojuego!</button></Link>
-            </div>
+            <h1 className='Videogames'>Videogames</h1>
 
-            <div>
-                <button className="bp" onClick={e => handleClick(e)}>
-                    Volver a cargar
-                </button>
-            </div>
+            <nav>
+                
+                    <Link to='/videogame'><button className="bp">Crea tu Videojuego!</button></Link>
+               
+
+              
+                    <button className="bp_volver" onClick={e => handleClick(e)}>
+                        Volver a cargar
+                    </button>
+               
+            </nav>
+
+
 
 
             <div className='home2'>
-                <select className="bp" onChange={e => handleSort(e)}>
+                <select className="select1" onChange={e => handleSort(e)}>
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>
 
 
-                <select className="bp" onChange={e => handleFilterByCreated(e)}>
+                <select className="select2" onChange={e => handleFilterByCreated(e)}>
                     <option value='All'>Todos</option>
                     <option value='Created'>Creados</option>
                 </select>
 
-                <select className="bp" onChange={e => handleFilterByGenres(e)}>
+                <select className="select3" onChange={e => handleFilterByGenres(e)}>
                     <option value='All'>Todos</option>
                     {genress &&
                         genress.map(el => (

@@ -1,14 +1,25 @@
 .bp{
-    background-color: rgb(117 ,128, 131 ,0.2);
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    padding: 6px;
-    width: 260px;
-    border-radius: 13px;
-    cursor: pointer;
+    width: 30%;
+    min-width: 150px;
+    padding: 5px 10px;
+    background-color: hsla(0,0%,100%,-0.93);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
 }
 
+.home .bp_volver{
+    width: 30%;
+   
+    min-width: 150px;
+    padding: 5px 10px;
+    background-color: hsla(0,0%,100%,-0.93);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+}
 
 .cardHome{
     display:grid;
@@ -16,8 +27,15 @@
     grid-template-columns: repeat(auto-fill, 17rem);
     gap: 4rem;
     margin-top: 2rem;
+    border-radius: 8px;
     
-    
+}
+
+h1{
+    font-size: 72px;
+    line-height: 74px;
+    font-weight: 700;
+    color: white;
 }
 
 
@@ -26,5 +44,12 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    background-color: rgb(33, 33, 33);
+    border-radius: 8px;
+    
+}
+
+.home2{
+    padding: 30px;
     
 }
