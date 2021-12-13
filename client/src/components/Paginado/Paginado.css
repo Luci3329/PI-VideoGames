@@ -1,3 +1,9 @@
+.paginado {
+    position:relative;
+    align-content: center;
+    width: auto;
+}
+
 .number {
     list-style: none;
     display: inline-block;

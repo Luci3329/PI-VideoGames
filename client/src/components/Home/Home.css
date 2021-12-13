@@ -106,7 +106,61 @@ h1{
     
 }
 
-.home2{
-    padding: 30px;
+.select {
+    
+    max-width: 250px;
+    position: relative;
     
 }
+     
+.select select {
+    appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+    display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 7px 10px;
+  	height: 35px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background:rgb(33, 33, 33);
+	color: #7b7b7b;
+	font-size: 1em;
+	color:white;
+	font-family: 
+	'Quicksand', sans-serif;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+    /* justify-content: space-between; */
+}
+/* 
+.select select::-ms-expand {
+    display: none;
+} */
+
+.select select:hover{
+	background: linear-gradient(
+        180deg,#fd867d,#b1305c);
+}
+
+
+
+.select1{
+    
+    left: 30%;
+}
+
+.select2{
+    
+    left: 143%;
+}
+
+.select3{
+    
+    left: 262%;
+}
+

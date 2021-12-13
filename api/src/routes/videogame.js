@@ -40,8 +40,9 @@ router.get('/:id', async (req, res) => { // ruta '/videogame'
       let { id : game_id, name, description, released, rating, platforms, background_image, genres } = gAPI.data;
       // tuve q renombrar el id xq interfería en el macheo del id params... no estoy segura de xq
 
-      platforms = platforms.map(p => p.platform.name); // [ {platform: { ... }}, {platform : { ... } } ]
-      genres = genres.map((p) => p.name); // [ {genre} {genre} {genre} ]
+      description = description.replace(/(<([^>]+)>)/gi, ""); // para q no se rendericen los <tag>, en el front me da error  
+      platforms = platforms.map(p => p.platform.name).map(p=> p + ' - '); // [ {platform: { ... }}, {platform : { ... } } ]
+      genres = genres.map((g) => g.name).map(g=> g + ' - '); // [ {genre} {genre} {genre} ]
 
       return res.status(200).json({ // probé 2 millones de cosas - no puedo mapear xq data es un objeto
         game_id,              // probé guandando todo ésto en una variable --> name : gAPI.data.name (etc)

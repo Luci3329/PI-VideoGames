@@ -95,7 +95,7 @@ export default function Home() {
 
 
             <div className='barraPrincipal'>
-                
+
                 <div className='volver'>
                     <button className="bp_volver" onClick={e => handleClick(e)}>
                         Volver a cargar
@@ -114,40 +114,40 @@ export default function Home() {
             </div>
 
 
-                <h1 className='Videogames'>Videogames</h1>
+            <h1 className='Videogames'>Videogames</h1>
 
 
-            <div className='home2'>
-                <select className="select1" onChange={e => handleSort(e)}>
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Descendente</option>
+            <div className='select'>
+                <select className="select1" placeholder='Orden ASC - DES' onChange={e => handleSort(e)}>
+                    <option value='asc'>Orden ASC</option>
+                    <option value='desc'>Orden DES</option>
                 </select>
 
 
                 <select className="select2" onChange={e => handleFilterByCreated(e)}>
-                    <option value='All'>Todos</option>
+                    <option value='All'>Todos Los Juegos ...</option>
                     <option value='Created'>Creados</option>
                 </select>
 
-                <select className="select3" onChange={e => handleFilterByGenres(e)}>
-                    <option value='All'>Todos</option>
+                <select className="select3"  onChange={e => handleFilterByGenres(e)}>
+                    <option value='All'>Todos Los Géneros ...</option>
                     {genress &&
                         genress.map(el => (
                             <option
                                 value={el}>{el}</option>
                         ))}
                 </select>
-
-
-                <Paginado
-                    gamesPorPag={gamesPorPag}
-                    allVideogames={allVideogames.length}
-                    paginado={paginado}
-                />
-
-
-
             </div>
+
+            <Paginado
+                gamesPorPag={gamesPorPag}
+                allVideogames={allVideogames.length}
+                paginado={paginado}
+            />
+
+
+
+
 
             <div className='cardHome'>
 
