@@ -47,17 +47,19 @@ router.get( '/', async (req, res) =>{
     try {
         let platforms = []
         let info =await getPlatforms();
-        info.forEach(g=>g.platforms.forEach(p=>{if(!platforms.includes(p)){platforms.push(p)}}))
+        info.forEach(g=>g.platforms.forEach(p=>{if(!platforms.includes(p)){platforms.push(p)}}));
+
+        
 
       
         const genresAll = await Genre.findAll({ // para la búsqueda por NOMBRE -> botón del front
           attributes : [ "name" ] // [ {name: '..'} {name: '..'} ]
           });
-        const genres = genresAll.map( g => g.name)  
+        const genres = genresAll.map( g => g.name)   
     
         return res.json({
           platforms,
-          genres,
+          genres
         });
 
       } catch (err) {

@@ -9,7 +9,7 @@ const { Router } = require('express');
 
 const videogames = require('./videogames');
 const videogame = require('./videogame');
-const genres = require('./genres');
+//const genres = require('./genres');
 const NewGame = require('./newGame'); 
 const info = require('./info');
 
@@ -24,7 +24,7 @@ router.use('/videogames', videogames); // home y búsqueda de un juego x query
 router.use('/videogame', videogame); // search x id
 router.use('/videogame', NewGame);  // POST recibo info del front x body
 // creo nuevo videojuego EN LA BASE DE DATOS  
-router.use('/genres', genres);       // todos los generos --> DB    
+ 
  
 router.use('/info', info) ; // a ésta me la cree al final -> para tener una ruta q me traiga 
 // el listado de todos los géneros y todas las plataformas q necesito para 

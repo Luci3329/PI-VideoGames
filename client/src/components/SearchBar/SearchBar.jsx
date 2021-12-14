@@ -24,6 +24,7 @@ export default function SearchBar (){
         <div className="search">
             <input className='input'
             type='text'
+            value= {game} 
             placeholder='           Cuál es tu juego?  ... '
             onChange={ e => handleInputChange(e) } />
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postVideogames, listGenres } from '../../actions';
+import { postVideogames, listGenres, listPlatforms } from '../../actions';
 import './NewGame.css';
 
 export default function NewGame() {
@@ -19,9 +19,9 @@ export default function NewGame() {
         description: '',
         background_image: '',
         released: '',
-        rating: '',
-        platforms: '',
-        genres: ''
+        rating: 0,
+        platforms: [],
+        genres: []
 
     })
 
@@ -93,6 +93,9 @@ export default function NewGame() {
     }, []);
     //lo saqué xq me traía problemas con la acción ListInfo y además rompía el SearchBar 
 
+    useEffect(() => {  // cuando el componente se monte -> traigo todo
+        dispatch(listPlatforms())
+    }, []);
 
     return (
 

@@ -53,13 +53,13 @@ function rootReducer(state = initialState, action) {   // acá van a ir todas mi
 
 
         case 'LIST_GENRES': // me traigo todo de mi ruta getInfo
-            //const allGenres = action.payload;//.map(genre => genre.name);
+            //const allGenres = action.payload;//.map(genre => genre.name); 
             //const allPlatforms = action.payload.platforms;
+            //const genresAll = action.payload.map(g => g.name)
 
             return {
                 ...state,
-                genres: action.payload.genres,
-                platforms: action.payload.platforms
+                genres: action.payload.genres
             }
 
         case 'FILTER_BY_GENRES': // el valor del select es lo q le llega a mi acción x payload
@@ -67,12 +67,18 @@ function rootReducer(state = initialState, action) {   // acá van a ir todas mi
             const genresFilter = action.payload === 'All' ? state.allVideogames : state.allVideogames.filter(el => el.genres.includes(action.payload))
             return {
                 ...state,
-                allVideogames: genresFilter
+                videogames: genresFilter
             }
 
-            //const allGs = state.allGenres // si recibo 'All' muestro todos, si marcan alguno -> filtro ese alguno
-            //const genresFilter = action.payload === 'All' ? allGs : allGs.filter(el => el.state === action.payload)
-            //const genreSS = action.payload.genre.map(genre=>genre.name);
+        //const allGs = state.allGenres // si recibo 'All' muestro todos, si marcan alguno -> filtro ese alguno
+        //const genresFilter = action.payload === 'All' ? allGs : allGs.filter(el => el.state === action.payload)
+        //const genreSS = action.payload.genre.map(genre=>genre.name);
+
+        case 'LIST_PLATFORMS':
+            return {
+                ...state,
+                platforms: action.payload.platforms
+            }
 
         case 'GET_NAME_GAME':
             return {

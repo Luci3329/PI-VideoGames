@@ -19,7 +19,36 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js'); // la base de datos
-// const {getGenres } = require('./src/controllers/genres/genre');
+//const { getGenres } = require('./src/routes/genres');
+
+
+const getGenres = async () => { // trigo todos los géneros de la api a mi base de datos
+
+  try {
+      // me trigo todos los géneros de la API y los guardo en mi DB tabla Genre
+      const genresApi = await axios.get(`https://api.rawg.io/api/genres?key=${RAWG_API_KEY}`);
+      const genresDb = genresApi.data.results.forEach(g => { // x cada género de la api creo uno en bd
+          Genre.findOrCreate({ // primero busca si ya existe... si no existe la crea -> tengo el servidor en { force: false }
+              where: { name: g.name },
+              defaults: {
+                  id: g.id,
+                  name: g.name
+              }
+          });
+      });
+
+      res.json(genresDb); // json me trae objetos -> VER
+
+
+  } catch (err) {
+      (err) => next(err) // .json({err : 'Gender Not Found!'}) va a ser un bótón, no tengo q responder nada
+  }
+
+}
+
+getGenres();
+
+
 
 // Syncing all the models at once.
 // ** SINCRONIZACIÓN **

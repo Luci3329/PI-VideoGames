@@ -54,6 +54,17 @@ export function filterByGenres(payload) {
 }
 
 
+export function listPlatforms() {
+    return async function (dispatch) {
+        //console.log("Get platforms/genre pedido");
+        var p = await axios.get('http://localhost:3001/info', {})
+        return dispatch({
+            type: "LIST_PLATFORMS",
+            payload: p.data
+        });
+    };
+};
+
 
 export function getNameGame(game) {
     return async function (dispatch) {
