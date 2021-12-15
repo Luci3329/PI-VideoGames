@@ -64,12 +64,7 @@ router.get('/', async (req, res, next) => {
     gamesDb = JSON.stringify(gamesDb);
     gamesDb = JSON.parse(gamesDb);
 
-    //Aca dejo el arreglo de generos plano con solo los nombres de cada genero(llega array de objetos)
-    /* gamesDb = gamesDb.reduce((acc, el) => acc.concat({
-        ...el,
-        genres: el.genres.map(g => g.name)
-    }), []) */
-
+    
 
     // búsqueda por query  ***************
 
