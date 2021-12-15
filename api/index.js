@@ -20,6 +20,9 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js'); // la base de datos
 //const { getGenres } = require('./src/routes/genres');
+require('dotenv').config();
+const { RAWG_API_KEY } = process.env;
+
 
 
 const getGenres = async () => { // trigo todos los géneros de la api a mi base de datos
@@ -30,14 +33,11 @@ const getGenres = async () => { // trigo todos los géneros de la api a mi base 
       const genresDb = genresApi.data.results.forEach(g => { // x cada género de la api creo uno en bd
           Genre.findOrCreate({ // primero busca si ya existe... si no existe la crea -> tengo el servidor en { force: false }
               where: { name: g.name },
-              defaults: {
-                  id: g.id,
-                  name: g.name
-              }
+              
           });
       });
 
-      res.json(genresDb); // json me trae objetos -> VER
+      return genresDb; // json me trae objetos -> VER
 
 
   } catch (err) {

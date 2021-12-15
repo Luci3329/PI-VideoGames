@@ -22,7 +22,7 @@ export default function Home() {
     //console.log(state.videogames)
 
     const genress = useSelector(state => state.genres)
-    console.log(genress)
+    //console.log(genress)
 
     /* const [ genre, setGenre ] = useState( {
         genres : []

@@ -8,22 +8,8 @@ const { Videogame, Genre } = require('../db');
 const router = Router();
 
 
-const getDbInfo = async () => {
-    return await Videogame.findAll({
-        attributes: ['name', 'background_image', 'rating', 'platforms', 'createdInDB'], // sólo me traigo los datos de la RUTA PRINCIPAL
-        include: {
-            model: Genre,
-            attributes: ['name'],
-            through: {
-                attributes: [],
-            }
-        }
-    })
-}
 
-
-
-const getApiInfo = async () => {
+const getApiInfo = async () => {   // función q me trae sólo 100 juegos
 
     var games = (num) => {   // num = 100
         const n = num / 20  // cantidad de páginas (5)
@@ -41,21 +27,21 @@ const getApiInfo = async () => {
     let total = await Promise.all(games(100))   // [  [20] [20] [20] [20] [20]  ]
 
 
-    let todos = []; 
+    let todos = [];
     total = total.map(e => e.data.results.map(los20 => todos.push(los20))) // 20 + 20 + 20 + 20 + 20
 
 
     let los100 = todos.map((game => {
         return { // me traigo sólo los datos requeridos en página principal
-            id : game.id,
+            id: game.id,
             name: game.name,
             background_image: game.background_image,
             rating: game.rating,
             genres: game.genres.map(gr => gr.name), //[ para q traiga sólo el nombre del género ]
-            platforms : game.platforms.map((platform) => platform.platform.name) // [ {} {} {} ]
+            platforms: game.platforms.map((platform) => platform.platform.name) // [ {} {} {} ]
         }// game.genres trae un arreglo de obj de c/ género del juego, pero con id, nombre, imagen y 2 huevadas más
-           // g.platforms.map((platform) => platform.platform.name)
-           // .map( p=> p.platform.name)
+        // g.platforms.map((platform) => platform.platform.name)
+        // .map( p=> p.platform.name)
     }))
 
 
@@ -65,44 +51,94 @@ const getApiInfo = async () => {
 
 
 
-const getAllVideogames = async () => {
-    const apiInfo = await getApiInfo();
-    const dbInfo = await getDbInfo();
-    const allInfo = apiInfo.concat(dbInfo);
-    //gAPI = await axios.get(gAPI.data.next)
-    return allInfo;
-}
 
-
-
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     // en ésta ruta tenemos q poder buscar un juego x query y traernos todos los juegos 
+    // primero me traigo los de la base de datos y los guardo (junto con los géneros concatenados) en un arr
 
-    const { name } = req.query;
+    let gamesDb = await Videogame.findAll({
+        include: Genre
+    });
 
-    const allGames = await getAllVideogames(); // arreglo de juegos concatenados
+    //Parseo el objeto -> no estoy segura para q ...
+    gamesDb = JSON.stringify(gamesDb);
+    gamesDb = JSON.parse(gamesDb);
 
-    if (name) {  // si me llega name por query
+    //Aca dejo el arreglo de generos plano con solo los nombres de cada genero(llega array de objetos)
+    /* gamesDb = gamesDb.reduce((acc, el) => acc.concat({
+        ...el,
+        genres: el.genres.map(g => g.name)
+    }), []) */
 
-        // voy a filtrar del arreglo con TODOS los juegos, el q coincida con el name de la query
-        const gameForName = await allGames.filter(game =>
-            game.name.toLowerCase().includes(name.toLowerCase()));
 
-        // **** pero q pasa si hay más de 1 juego con el mismo nombre? FILTER 
-        //                      no me trae sólo el 1ro q coincida????  
-        //      el readme dice traer los primeros 15 q coincidan        *************
+    // búsqueda por query  ***************
 
-        gameForName.length ?
-            res.status(200).send(gameForName) :
-            res.status(404).send('Juego Inexistente')
 
-    } else {
-        res.status(200).send(allGames);
+    if (req.query.name) {
+        try {
+            //busco si existe el juego en la API
+            let info = await axios.get(`https://api.rawg.io/api/games?search=${req.query.name}&key=${RAWG_API_KEY}`);
+            if (!info.data.count) return res.status(204).json(`Juego no encontrado "${req.query.name}"`);
+
+            //filtro -> ruta principal -> nombre, imagen, género
+            const infoApi = info.data.results.map(game => {
+                return {
+                    id: game.id,
+                    name: game.name,
+                    background_image: game.background_image,
+                    rating: game.rating,
+                    genres: game.genres.map(g => g.name)
+                }
+            });
+
+            //como antes me traje TODOS de la base de datos, si entro por queries, solo filtro los que coincidan con la busqueda
+            const gamesDbSearch = gamesDb.filter(g => g.name.toLowerCase().includes(req.query.name.toLowerCase()));
+            //doy prioridad a la DB, y sumo todos, y corto el array en 15
+            const results = [...gamesDbSearch, ...infoApi.splice(0, 15)];
+            // xq el readme me pide traer las 1ras 15 coincidencias
+
+            return res.json(results) // arreglo con coincidencias tanto de la db como de la api
+
+        } catch (err) {
+            next(err)
+        }
+
+    } else { // si no viene búsqueda por query -> muestro los 100 en el inicio
+
+        /*    const inicio = await getApiInfo();
+           res.status(200).send(inicio);
+       } */
+
+        try {
+            let pages = 0;
+            var results = [...gamesDb]; //sumo lo que tengo en la DB
+            var response = await axios.get(`https://api.rawg.io/api/games?key=${RAWG_API_KEY}`);
+            while (pages < 6) {
+                pages++;
+                //filtro solo la DATA que necesito enviar al FRONT
+                const seleccion = response.data.results.map(game => {
+                    return {
+                        id: game.id,
+                        name: game.name,
+                        background_image: game.background_image,
+                        rating: game.rating,
+                        genres: game.genres.map(g => g.name)
+                    }
+                });
+                results = [...results, ...seleccion] // base de datos + api
+                response = await axios.get(response.data.next) //vuelvo a llamar a la API con next
+                                                              // xq no puedo usar la propiedad page                      
+            }
+            return res.json(results)
+        } catch (err) {
+            console.log(err)
+            return res.sendStatus(500)
+        }
     }
-})
+});
 
 
 module.exports = router;
 
-    
+
 
