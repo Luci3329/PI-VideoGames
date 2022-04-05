@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getNameGame } from '../../actions';
-import './SearchBar.css'
+//import './SearchBar.css'
 
 export default function SearchBar (){
     
@@ -16,7 +16,7 @@ export default function SearchBar (){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(getNameGame(game));
-        setGame('');   // NO FUNCIONA, no me lo borra cuando termina de buscar -> VER!!!
+        setGame('');   
     }
 
     return (

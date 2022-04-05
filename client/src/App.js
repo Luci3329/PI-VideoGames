@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage';
 import Home from './components/Home/Home';
-import NewGame from './components/NewGame/NewGame';
+import NewGame from './components/NewGame/NewGame.jsx';
 import Detail from './components/Detail/Detail';
 // voy a importar todos los componentes para poner en mis rutas
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../actions';
-import './Detail.css';
+//import './Detail.css';
 
 export default function Detail(props) {
     console.log(props)
@@ -11,7 +11,7 @@ export default function Detail(props) {
 
     useEffect(() => {
         dispatch(getDetail(props.match.params.id));
-    }, [dispatch])
+    }, [props.match.params.id])
 
     const myGame = useSelector((state => state.detail))
     console.log(myGame)
@@ -31,7 +31,7 @@ export default function Detail(props) {
                         <h1> {myGame.name}</h1>
 
                         <div className='divNuevo'>
-                            <img className='img' src={myGame.background_image} />
+                            <img className='img' src={myGame.background_image} alt="imagen" width='200px' height='160px' />
                             <div className='pdes'><p>{myGame.description}</p></div>
 
 

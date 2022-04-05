@@ -1,4 +1,4 @@
-.bp{
+/* .bp{
     width: 30%;
     min-width: 205px;
     padding: 5px 10px;
@@ -135,12 +135,11 @@ h1{
     border-radius: 12px;
     position: relative;
     transition: all 0.25s ease;
-    /* justify-content: space-between; */
-}
-/* 
+     justify-content: space-between; 
+
 .select select::-ms-expand {
     display: none;
-} */
+} 
 
 .select select:hover{
 	background: linear-gradient(
@@ -163,4 +162,5 @@ h1{
     
     left: 262%;
 }
-
+ 
+ */

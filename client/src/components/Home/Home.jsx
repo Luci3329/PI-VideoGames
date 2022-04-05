@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar.jsx';
-import './Home.css';
+//import './Home.css';
+import NavLuci from './navBar.js';
 
 
 export default function Home() {
@@ -48,19 +49,18 @@ export default function Home() {
     }
 
 
-    useEffect(() => {   // tendría q agregarle la función del FilterGenre??
+    /* useEffect(() => { 
         dispatch(getVideogames())
-    }, [dispatch]) // ese 2do arg [] es de lo q depende la ejecución del dispatch (condición/dependencias)
-    // a q estado debe hacerle 'seguimiento' -> ComponentDidUpdat -> ACTUALIZACIÓN  
+    }, [dispatch]) */
 
     useEffect(() => {  // cuando el componente se monte -> traigo todo
         dispatch(listGenres())
     }, []);
 
-    function handleClick(e) {
+    /* function handleClick(e) {
         e.preventDefault();
         dispatch(getVideogames());
-    }
+    } */
 
     function handleFilterByCreated(e) {
         dispatch(filterCreated(e.target.value))
@@ -83,22 +83,22 @@ export default function Home() {
         }) */
     };
 
-    /*  function handleFilterGenre(e){
-         dispatch(filterByGenres(e))
-     } 
-      */
-
 
 
     return (
         <div className='home'>
 
+            <div>
+                <NavLuci />
+            </div>
 
-            <div className='barraPrincipal'>
+
+
+            {/* <nav className='barraPrincipal'>
 
                 <div className='volver'>
                     <button className="bp_volver" onClick={e => handleClick(e)}>
-                        Volver a cargar
+                        Refrescar
                     </button>
                 </div>
 
@@ -111,25 +111,26 @@ export default function Home() {
                 </div>
 
 
-            </div>
+            </nav> */}
 
-
+            <br />
             <h1 className='Videogames'>Videogames</h1>
-
+            <br />
 
             <div className='select'>
                 <select className="select1" placeholder='Orden ASC - DES' onChange={e => handleSort(e)}>
                     <option value='asc'>Orden ASC</option>
                     <option value='desc'>Orden DES</option>
                 </select>
-
+                
 
                 <select className="select2" onChange={e => handleFilterByCreated(e)}>
                     <option value='All'>Todos Los Juegos ...</option>
                     <option value='Created'>Creados</option>
                 </select>
+                
 
-                <select className="select3"  onChange={e => handleFilterByGenres(e)}>
+                <select className="select3" onChange={e => handleFilterByGenres(e)}>
                     <option value='All'>Todos Los Géneros ...</option>
                     {genress &&
                         genress.map(el => (
@@ -139,12 +140,13 @@ export default function Home() {
                 </select>
             </div>
 
+            <br />
             <Paginado
-                gamesPorPag={gamesPorPag}
-                allVideogames={allVideogames.length}
-                paginado={paginado}
+            gamesPorPag={gamesPorPag}
+            allVideogames={allVideogames.length}
+            paginado={paginado} 
             />
-
+            <br />
 
 
 
