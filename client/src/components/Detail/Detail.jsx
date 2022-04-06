@@ -5,7 +5,7 @@ import { getDetail } from '../../actions';
 //import './Detail.css';
 
 export default function Detail(props) {
-    console.log(props)
+    //console.log(props)
 
     const dispatch = useDispatch()
 
@@ -20,59 +20,26 @@ export default function Detail(props) {
 
     return (
 
-        <div className='detail'>
+        <div>
 
 
             {
-                myGame ?
-
-                    <div className='cardDetail'>
-
-                        <h1> {myGame.name}</h1>
-
-                        <div className='divNuevo'>
-                            <img className='img' src={myGame.background_image} alt="imagen" width='200px' height='160px' />
-                            <div className='pdes'><p>{myGame.description}</p></div>
+                Object.keys(myGame).length > 0 ?
 
 
+                    <div class="card" style="width: 18rem;">
+                        <img src={myGame.background_image} class="card-img-top" alt="imagen" />
+                        <div class="card-body">
+                            <h5 class="card-title">{myGame.name}</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <Link to='/home'>
+                                <button class="btn btn-light" type="button">Volver</button></Link>
                         </div>
-
-
-                        <div className='lista'>
-
-                            <p>
-                                <h4>Fecha de Lanzamiento</h4>
-                                <h6>{myGame.released}</h6></p>
-
-                            <p>   <h4>Rating</h4>
-                                <h6>{myGame.rating}</h6></p>
-
-                            <p>  <h4>Plataformas</h4>
-                                <h6>{myGame.platforms}</h6></p>
-
-                            <p>   <h4>Géneros</h4>
-                                <h6>{myGame.genres}</h6></p>
-
-
-
-                        </div>
-
-
-
-
                     </div> : <p>Loading ...</p>
+
             }
 
-
-            <Link to='/home'>
-                <button className='vr'>Volver</button>
-            </Link>
-
         </div>
-
-
     )
 }
 
-// PARA QUE NO SE RENDERICEN LOS <tag> en description
-//.replace(/(<([^>]+)>)/gi, "") -> lo hice en el back xq acá rompía

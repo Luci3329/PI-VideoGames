@@ -5,11 +5,11 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVideogames, filterCreated, orderByGame, listGenres, filterByGenres } from '../../actions';
 import { Link } from 'react-router-dom';
-import Card from '../Card/Card';
+import CardList from '../Card/CardList';
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar.jsx';
-//import './Home.css';
-import NavLuci from './navBar.js';
+import './Home.css';
+import NavLuci from './navBar.jsx';
 
 
 export default function Home() {
@@ -117,18 +117,58 @@ export default function Home() {
             <h1 className='Videogames'>Videogames</h1>
             <br />
 
-            <div className='select'>
+            <div class="form-floating">
+                <select class="form-select"
+                    id="floatingSelect"
+                    aria-label="Floating label select example"
+                    onChange={e => handleFilterByCreated(e)}>
+                    <option selected>Todos Los Juegos</option>
+                    <option value="1">Todos Los Juegos</option>
+                    <option value="2">Creaciones</option>
+                </select>
+                <label for="floatingSelect">Filtro por Juego</label>
+            </div>
+
+            <div class="form-floating">
+                <select class="form-select"
+                    id="floatingSelect"
+                    aria-label="Floating label select example"
+                    onChange={e => handleFilterByGenres(e)}>
+                    <option value="4">Todos Los Géneros</option>
+                    {genress &&
+                        genress.map(el => (
+                            <option
+                                value={el}>{el}</option>
+                        ))}
+                </select>
+                <label for="floatingSelect">Filtro por Género</label>
+            </div>
+
+
+            <div class="form-floating">
+                <select class="form-select"
+                    id="floatingSelect"
+                    aria-label="Floating label select example"
+                    onChange={e => handleSort(e)}>
+                    <option selected>abc</option>
+                    <option value="5">Ascendente</option>
+                    <option value="6">Descendente</option>
+                </select>
+                <label for="floatingSelect">Ordenamiento</label>
+            </div>
+
+            {/* <div className='select'>
                 <select className="select1" placeholder='Orden ASC - DES' onChange={e => handleSort(e)}>
                     <option value='asc'>Orden ASC</option>
                     <option value='desc'>Orden DES</option>
                 </select>
-                
+
 
                 <select className="select2" onChange={e => handleFilterByCreated(e)}>
                     <option value='All'>Todos Los Juegos ...</option>
                     <option value='Created'>Creados</option>
                 </select>
-                
+
 
                 <select className="select3" onChange={e => handleFilterByGenres(e)}>
                     <option value='All'>Todos Los Géneros ...</option>
@@ -138,35 +178,37 @@ export default function Home() {
                                 value={el}>{el}</option>
                         ))}
                 </select>
-            </div>
+            </div> */}
 
             <br />
             <Paginado
-            gamesPorPag={gamesPorPag}
-            allVideogames={allVideogames.length}
-            paginado={paginado} 
+                gamesPorPag={gamesPorPag}
+                allVideogames={allVideogames.length}
+                paginado={paginado}
             />
             <br />
 
 
+            <CardList
+                games={gamesPagActual} />
 
+            {/* <div class="container">
+                <div class="row">
 
-            <div className='cardHome'>
+                    {
+                        gamesPagActual?.map((el) => {
+                            return (
+                                <div className='col-md-4"'>
+                                    <Link to={'/videogame/' + el.id} >
+                                        <Card name={el.name} background_image={el.background_image} rating={el.rating} genres={el.genres} key={el.id} />
+                                    </Link>
+                                </div>
+                            );
 
-                {
-                    gamesPagActual?.map((el) => {
-                        return (
-                            <div className='cardsContainer'>
-                                <Link to={'/videogame/' + el.id} >
-                                    <Card name={el.name} background_image={el.background_image} rating={el.rating} genres={el.genres} key={el.id} />
-                                </Link>
-                            </div>
-                        );
-
-                    })
-                }
-
-            </div>
+                        })
+                    }
+                </div>
+            </div> */}
 
         </div>
     )

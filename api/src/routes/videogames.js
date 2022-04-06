@@ -92,7 +92,11 @@ router.get('/', async (req, res, next) => {
             const results = [...gamesDbSearch, ...infoApi.splice(0, 15)];
             // xq el readme me pide traer las 1ras 15 coincidencias
 
-            return res.json(results) // arreglo con coincidencias tanto de la db como de la api
+            // return res.json(results)  arreglo con coincidencias tanto de la db como de la api
+
+            results.length > 0 ?
+            res.status(200).send(results) :
+            res.status(200).send('Juego Inexistente');
 
         } catch (err) {
             next(err)

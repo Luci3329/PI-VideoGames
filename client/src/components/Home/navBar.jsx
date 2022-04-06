@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getNameGame, getVideogames } from '../../actions/index';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './navBar.css';
 
 export default function NavLuci() {
 

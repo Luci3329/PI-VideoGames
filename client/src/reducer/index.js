@@ -23,18 +23,18 @@ function rootReducer(state = initialState, action) {   // acá van a ir todas mi
         case 'FILTER_CREATED':
 
             const allVideogames = state.allVideogames
-            const createdFilter = action.payload === 'Created' ?
+            const createdFilter = action.payload === '2' ?
                 allVideogames.filter(el => el.createdInDB) :
                 allVideogames.filter(el => !el.createdInDB)
 
             return {
                 ...state,
-                videogames: action.payload === 'All' ? state.allVideogames : createdFilter
+                videogames: action.payload === '1' ? state.allVideogames : createdFilter
             }
 
         case 'ORDER_BY_GAME':
 
-            let sortedArr = action.payload === 'asc' ?
+            let sortedArr = action.payload === '5' ?
                 state.videogames.sort(function (a, b) {
                     if (a.name > b.name) return 1;
                     if (b.name > a.name) return -1;
@@ -64,7 +64,7 @@ function rootReducer(state = initialState, action) {   // acá van a ir todas mi
 
         case 'FILTER_BY_GENRES': // el valor del select es lo q le llega a mi acción x payload
             //const videogames = state.videogames
-            const genresFilter = action.payload === 'All' ? state.allVideogames : state.allVideogames.filter(el => el.genres.includes(action.payload))
+            const genresFilter = action.payload === '4' ? state.allVideogames : state.allVideogames.filter(el => el.genres.includes(action.payload))
             return {
                 ...state,
                 videogames: genresFilter
