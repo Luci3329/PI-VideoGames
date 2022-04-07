@@ -20,7 +20,7 @@ router.post('/', async (req, res) => { // viene todo del form del front x body
             background_image,
             released,
             rating,
-            platforms: platforms, //.map(p => p.platform.name) AHORA son string 
+            platforms,//: platforms, //.map(p => p.platform.name) AHORA son string 
             createdInDb // seteada en true -> en las pruebas no la paso, pero me tiene q llegar
         })
 

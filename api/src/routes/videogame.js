@@ -17,9 +17,6 @@ const router = Router();
 
 router.get('/:id', async (req, res) => { // ruta '/videogame'
 
-
-  try {
-
     const { id } = req.params;
 
 
@@ -29,7 +26,7 @@ router.get('/:id', async (req, res) => { // ruta '/videogame'
         include: Genre
       });
 
-      res.status(200).json({ data: getIdDb.dataValues })
+      res.status(200).json( getIdDb )
 
     } else { // si no coincide con alguno de la db --> lo busco en la api
 
@@ -41,8 +38,8 @@ router.get('/:id', async (req, res) => { // ruta '/videogame'
       // tuve q renombrar el id xq interfería en el macheo del id params... no estoy segura de xq
 
       description = description.replace(/(<([^>]+)>)/gi, ""); // para q no se rendericen los <tag>, en el front me da error  
-      platforms = platforms.map(p => p.platform.name).map(p=> p + ' - '); // [ {platform: { ... }}, {platform : { ... } } ]
-      genres = genres.map((g) => g.name).map(g=> g + ' - '); // [ {genre} {genre} {genre} ]
+      platforms = platforms.map(p => p.platform.name) //.map(p=> p + ' - '); // [ {platform: { ... }}, {platform : { ... } } ]
+      genres = genres.map(el => { return { id: el.id, name: el.name } }) //((g) => g.name).map(g=> g + ' - '); // [ {genre} {genre} {genre} ]
 
       return res.status(200).json({ // probé 2 millones de cosas - no puedo mapear xq data es un objeto
         game_id,              // probé guandando todo ésto en una variable --> name : gAPI.data.name (etc)
@@ -56,9 +53,7 @@ router.get('/:id', async (req, res) => { // ruta '/videogame'
       })
 
     }
-  } catch (err) {
-    res.status(404).json({ err: 'Videogame Not Found!' });
-  }
+  
 
 });
 

@@ -56,7 +56,7 @@ getGenres();
 
 // Syncing all the models at once.
 // ** SINCRONIZACIÓN **
-conn.sync({ force: false }).then(() => { // cuidado! 
+conn.sync({ force: true }).then(() => { // cuidado! 
   server.listen(3001, () => { // el back y el front deben andar en puertos diferentes y ambos al tiempo
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
     },
 
     background_image: {
-      type : DataTypes.STRING
+      type : DataTypes.TEXT
     },
 
     description : {
@@ -36,8 +36,8 @@ module.exports = (sequelize) => {
     },
 
     platforms : {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      allowNull: false
     },
 
     createdInDB : {

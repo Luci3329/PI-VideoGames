@@ -34,26 +34,19 @@ export default function NewGame() {
         }) // DINÁMICO -> va a ir tomando los valores de los inputs y los va modificando según lo escrito
     }
 
-    function handleSelect(e) { 
+    function handleSelectGenres(e){
         setInput({
             ...input,
-            platforms: [...input.platforms, e.target.value],
             genres: [...input.genres, e.target.value]
         })
-        //platforms: [...input.platforms, e.target.value],
-        //genres: [...input.genres, e.target.value]
     }
 
-
-    /* function handleSelectGen(e) { // tengo 2 select : genres y platforms -> PUEDE FALLAR DECÍA TUSAN!
+    function handleSelectPlataforms(e){
         setInput({
             ...input,
-            
-            genres: [...input.genres, e.target.value]
+            platforms: [...input.platforms, e.target.value]
         })
-            //platforms: [...input.platforms, e.target.value],
-            //genres: [...input.genres, e.target.value]
-    } */
+    }
 
 
     function handleSubmit(e) {
@@ -74,20 +67,19 @@ export default function NewGame() {
         history.push('/home') // useHistory -> me redirecciona al Home
     }
 
-    function handleDelete(el) {
+    function handleDeletePlatform(el) {
         setInput({
             ...input,
-            platforms: input.platforms.filter(platform => platform !== el),
-            genres: input.genres.filter(genre => genre !== el)
+            platforms: input.platforms.filter(platform => platform !== el)
         })
     }
 
-    /* function handleDeleteGenre(el) {
+    function handleDeleteGenre(el) {
         setInput({
             ...input,
             genres: input.genres.filter(genre => genre !== el)
         })
-    } */
+    }
 
     useEffect(() => {  // cuando el componente se monte -> traigo todo
         dispatch(listGenres())
@@ -158,12 +150,12 @@ export default function NewGame() {
 
                 <div>
                     <label>Plataforma/s </label>
-                    <select onChange={(e) => handleSelect(e)}>
+                    <select onChange={(e) => handleSelectPlataforms(e)}>
 
 
                         {
                             platforms?.map((platform) => {
-                                return <option value={platform} key={platform}> {platform} </option>
+                                return <option value={platform} key={platform} name="platforms"> {platform} </option>
                             })}
                     </select>
 
@@ -171,7 +163,7 @@ export default function NewGame() {
 
                 <div>
                     <label>Género/s </label>
-                    <select onChange={(e) => handleSelect(e)}>
+                    <select onChange={(e) => handleSelectGenres(e)}>
 
                         {
                             genres?.map((genre) => {
@@ -192,7 +184,7 @@ export default function NewGame() {
                     <div>
                         <h5 key={el}>{el}</h5>
                         <button className='boton X'
-                            onClick={() => handleDelete(el)} > X </button>
+                            onClick={() => handleDeleteGenre(el)} > X </button>
                     </div>
                 )
             })}
@@ -203,7 +195,7 @@ export default function NewGame() {
                     <div>
                         <h5 key={el}>{el}</h5>
                         <button className='boton X'
-                            onClick={() => handleDelete(el)} > X </button>
+                            onClick={() => handleDeletePlatform(el)} > X </button>
                     </div>
                 )
             })}

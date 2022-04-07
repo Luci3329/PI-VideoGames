@@ -94,6 +94,8 @@ router.get('/', async (req, res, next) => {
 
             // return res.json(results)  arreglo con coincidencias tanto de la db como de la api
 
+            console.log(results);
+
             results.length > 0 ?
             res.status(200).send(results) :
             res.status(200).send('Juego Inexistente');

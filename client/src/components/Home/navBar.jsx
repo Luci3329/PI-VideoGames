@@ -46,23 +46,14 @@ export default function NavLuci() {
 
                 <div class="collapse navbar-collapse" id="navbarScroll">
 
-                    <div class= "d-grid gap-2 col-6 mx-auto" >
-                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style={{ scrollHeight: "100px" }}>
-                        
-                            <li class="d-grid gap-4 col-6 mx-auto">
+                    <div class="navbar-nav d-flex justify-content-center">
 
-                                <Link to='/videogame'>
-                                    <button class="btn btn-light" type="button">Crea Tu Videojuego</button></Link>
+                        <a class="nav-link" aria-current="page" href='/videogame'>Crea Tu Videojuego</a>
+                        <a class="nav-link" href="#" onClick={e => handleClick(e)}>Refrescar</a>
 
-                            </li>
-                       
-                        <li class="d-grid gap-4 col-6 mx-auto">
-                            <button type="button" class="btn btn-light" onClick={e => handleClick(e)}>Refrescar</button>
-                        </li>
-
-
-                    </ul>
                     </div>
+
+                    <div class="d-flex justify-content-end" >
 
                     <form class="d-flex">
                         <input class="form-control me-2"
@@ -74,7 +65,7 @@ export default function NavLuci() {
                         <button class="btn btn-outline-success" type="submit"
                             onClick={e => handleSubmit(e)}> Buscar </button>
                     </form>
-                    
+                    </div>
                 </div>
             </div>
         </nav>
@@ -82,3 +73,8 @@ export default function NavLuci() {
     )
 
 }
+
+
+{/* <Link to='/videogame'>
+<button class="btn btn-light btn-lg" type="button">Crea Tu Videojuego</button></Link>
+<button type="button" class="btn btn-light btn-sm" onClick={e => handleClick(e)}>Refrescar</button> */}
