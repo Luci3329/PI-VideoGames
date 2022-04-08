@@ -89,7 +89,7 @@ export default function Home() {
                     <option value="1">Todos Los Juegos</option>
                     <option value="2">Creaciones</option>
                 </select>
-                <label for="floatingSelect">Filtro por Juego</label>
+                <label for="floatingSelect">Filtro por Origen</label>
             </div>
 
 

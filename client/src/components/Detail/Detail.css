@@ -1,51 +1,94 @@
-.container{
+
+/* Configuración Móvil
+----------------------------- */
+
+@media (min-width: 500px) {
+    .contenedor {
+        grid-template-areas:
+            "titulo"
+            "descripcion"
+            "card-body"
+            "card-body2"
+            "card-body3"
+            "volver";
+
+        /* grid-template-columns: 1fr 1fr 1fr;    
+        grid-template-rows: 1fr; */
+    }
+
+}
+
+/* Configuración Para Escritorio */ 
+
+.contenedor {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(1,auto);
-    grid-template-areas: 
-    "titulo titulo"
-    "imagen imagen"
-    "descripcion descripcion"
-    "card-body card-body2"
-    "volver volver";
-    
+    grid-gap: 2px;
+    justify-content: center;
+
+    grid-template-areas:
+    "titulo titulo titulo"
+    "descripcion descripcion descripcion"
+    "card-body card-body2 card-body3"
+    "volver volver volver";
+
+        grid-template-columns: 1fr 1fr 1fr;    
+        grid-template-rows: 1fr;
+
     border: solid;
-    border-color: #2EE59D;
+    border-color: black;
     margin: 5%;
     border-radius: 2%;
 }
 
-.titulo{
+
+.titulo {
     grid-area: titulo;
-    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.descripcion{
+.descripcion {
     grid-area: descripcion;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    text-align: justify;
     margin: 20px;
 }
 
-.imagen{
-    grid-area: imagen;
-    margin: 20px;
+.card-body {
+    grid-area: card-body;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
 }
 
-.volver{
+.card-body2 {
+    grid-area: card-body2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+}
+
+.card-body3 {
+    grid-area: card-body3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+}
+
+.volver {
     grid-area: volver;
     margin: 20px;
 }
 
-.card{
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} 
-
-.card-img-top{
-    width: 400px;
-    height: 200px;
-    
+.card-img-top {
+    width: 450px;
+    height: 250px;
+    padding-right: 15px;
     border-radius: 2%;
 }
-

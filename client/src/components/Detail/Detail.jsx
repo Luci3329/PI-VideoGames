@@ -18,23 +18,23 @@ export default function Detail(props) {
 
     return (
 
-        <div className='container'>
+        <div className='contenedor'>
 
             <div className='titulo'>
                 <h3 class="card-title">{myVideogame.name}</h3>
             </div>
 
-            <div class="imagen" style={{ width: "18rem;" }}>
-                <img src={myVideogame.background_image} class="card-img-top" alt="imagen" />
-            </div>
 
-            <div class="descripcion"><p>{myVideogame.description}</p></div>
+            <div class="descripcion">
+                <p className='texto' lang="es"><img src={myVideogame.background_image} class="card-img-top" align="left" alt="imagen" />
+                    {myVideogame.description}</p>
+            </div>
 
             <div class="card-body">
 
                 <p class="card-text">
                     <h6>Fecha de Lanzamiento</h6>
-                    <span>{myVideogame.released}</span></p>
+                    <span>{myVideogame.released}</span></p><br/>
 
                 <p class="card-text">
                     <h6>Rating</h6>
@@ -46,15 +46,17 @@ export default function Detail(props) {
                     <h6>Plataformas</h6>
                     {
                         myVideogame.platforms &&
-                        myVideogame.platforms?.map(elem => <li key={elem} >{elem}</li>)
+                        myVideogame.platforms?.map(elem => <li className='lista' key={elem}><span className='viñ'>{elem}</span></li>)
                     }
                 </ul>
+            </div>
 
+            <div className='card-body3'>
                 <ul class="card-text">
                     <h6>Géneros</h6>
                     {
                         myVideogame.genres &&
-                        myVideogame.genres?.map(gen => <li key={gen.id} >{gen.name} - </li>)
+                        myVideogame.genres?.map(gen => <li className='lista' key={gen.id} ><span className='viñ'>{gen.name}</span></li>)
                     }
                 </ul>
             </div>
