@@ -28,11 +28,12 @@ module.exports = (sequelize) => {
     },
 
     released : {
-      type: DataTypes.STRING
+      type: DataTypes.DATE
+      /* defaultValue: format('YYYY-MM-DD') */
     },
 
     rating : {
-      type: DataTypes.FLOAT   // **
+      type: DataTypes.FLOAT  // **
     },
 
     platforms : {
@@ -48,3 +49,4 @@ module.exports = (sequelize) => {
 
   });
 };
+
