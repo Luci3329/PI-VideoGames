@@ -18,10 +18,12 @@ function validarForm(errors) {
 
 // renderizamos entes de cerrar el form
 
-return (
 
-    <input disabled={errors.disabled} type='submit' value='submit' />
-)
+
+    <div>
+        <input disabled={errors.disabled} type='submit' value='submit' />
+    </div>
+
 
 
 // VALIDACIONES DEL FORM
@@ -51,7 +53,7 @@ setErrors(validate({
 
 // renderizo en el input (en caso de q suceda) abajo del onChange = ... handleChange />
 
-return (
+
 
     <div>
 
@@ -60,4 +62,3 @@ return (
         )}
 
     </div>
-)

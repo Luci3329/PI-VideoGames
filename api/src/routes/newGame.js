@@ -23,13 +23,15 @@ router.post('/', async (req, res) => { // viene todo del form del front x body
             platforms,//: platforms, //.map(p => p.platform.name) AHORA son string 
             createdInDb // seteada en true -> en las pruebas no la paso, pero me tiene q llegar
         })
-
+       
+      
     
     // un juego --> más de 1 género [ " ", " " ] // if(genres.length > 1){ (si seleccionan más de 1)
     // buso en mi tabla Genre aquel género (name) q coincida con el q pasan por body
     const genresDB = await Genre.findAll({
-        where : { name : genres }
+        where: {name: genres}
     })
+    
     
     gameCreated.addGenre(genresDB); // mixing -> se incorpora el nuevo juego a la tabla de géneros
         

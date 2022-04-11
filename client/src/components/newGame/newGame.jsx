@@ -26,7 +26,6 @@ export default function NewGame() {
     const genres = useSelector(state => state.genres)
     //console.log(genres) // arreglo de strings
     const platforms = useSelector(state => state.platforms)
-    //console.log(platforms)
 
     const [input, setInput] = useState({
         name: '',
@@ -47,6 +46,13 @@ export default function NewGame() {
             [e.target.name]: e.target.value
         }) // DINÁMICO -> va a ir tomando los valores de los inputs y los va modificando según lo escrito
     }
+
+    /*  function handleChangeFecha(e){ // sino la fecha viene 
+         setInput({
+             ...input,
+             [e.target.name]: e.target.value.substring(0, 10)
+         })
+     } */
 
     function handleSelectGenres(e) {
         setInput({
@@ -108,7 +114,7 @@ export default function NewGame() {
 
         <div className='principal'>
 
-            <h2 className='crea'>Crea tu Videojuego!</h2><br/>
+            <h2 className='crea'>Crea tu Videojuego!</h2><br />
 
             <form enctype="multipart/form-data"  // para poder adjuntar archivos
                 onSubmit={e => handleSubmit(e)}>
@@ -123,44 +129,21 @@ export default function NewGame() {
                         name='name'
                         onChange={e => handleChange(e)} />
                     <label for="floatingInput">Nombre</label>
-
-                    {/* <label>Nombre </label>
-                    <input
-                        type='text'
-                        value={input.name}
-                        name='name'
-                        onChange={e => handleChange(e)} /> */}
                 </div>
 
                 <div class="form-floating mb-3">
 
-                    <input type='text'
-                        class="form-control"
+                    <textarea class="form-control"
                         placeholder="Descripción"
-                        id="floatingInput"
-                        rows="3"
+                        id="floatingTextarea2"
                         value={input.description}
                         name='description'
+                        style={{ height: "100px" }}
                         onChange={e => handleChange(e)} />
-                    <label for="floatingInput">Descripcion</label>
-
-                    {/*  <label>Descripcion </label>
-                    <input
-                        type='text'
-                        value={input.description}
-                        name='description'
-                        onChange={e => handleChange(e)} /> */}
+                    <label for="floatingTextarea2">Descripcion</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    {/* <label>Imagen </label>
-                    <input
-                        type="file"
-                        accept=".pdf,.jpg,.png" multiple
-                        value={input.background_image}
-                        name='background_image'
-                        onChange={e => handleChange(e)} /> */}
-
                     <input type='text'
                         class="form-control"
                         id="floatingInput"
@@ -172,49 +155,21 @@ export default function NewGame() {
 
                 </div>
 
-                {/* <div>
-                    <label>Fecha de Lanzamiento </label>
-                    <input
-                        type="date"
-                        placeholder='aaaa - mm - dd'
-                        autoComplete="off"
-                        id="start"
-                        min="2022-04-08"
-                        max="2025-12-31"
-                        value={input.released}
-                        name='trip-start"'
-                        onChange={e => handleChange(e)} />
-                </div> */}
-
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Fecha de Lanzamiento</span>
                     <input type="date"
                         class="form-control"
                         aria-label="Fecha de Lanzamiento"
                         placeholder='aaaa - mm - dd'
-                        id="start"
+                        id="released"
                         min="2022-04-08"
                         max="2025-12-31"
                         value={input.released}
-                        name='trip-start'
+                        name='released'
                         aria-describedby="basic-addon1"
                         onChange={e => handleChange(e)} />
 
                 </div>
-
-                {/* <div>
-                    <input type='number'
-                        class="form-control"
-                        id="floatingInput"
-                        placeholder="Rating"
-                        step="0.1"
-                        min='0.1'
-                        max='5'
-                        value={input.rating}
-                        name='rating'
-                        onChange={e => handleChange(e)} />
-                    <label for="floatingInput">Rating</label>
-                </div> */}
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Rating</span>
@@ -232,103 +187,95 @@ export default function NewGame() {
 
                 </div>
 
-                <div>
-                    {/* <label>Plataforma/s </label>
-                    <select onChange={(e) => handleSelectPlataforms(e)}>
 
+                <div class="form-floating mb-3">
+                    <select class="form-select"
+                        id="floatingSelect"
+                        aria-label="Floating label select example"
+                        onChange={(e) => handleSelectPlataforms(e)}>
 
                         {
                             platforms?.map((platform) => {
                                 return <option value={platform} key={platform} name="platforms"> {platform} </option>
                             })}
-                    </select> */}
-
-                    <label for="exampleDataList" class="form-label"></label>
-                    <input class="form-control"
-                        list="datalistOptions"
-                        id="exampleDataList"
-                        placeholder="Seleccione Plataforma/s"
-                        onChange={(e) => handleSelectPlataforms(e)} />
-
-                    <datalist id="datalistOptions">
-                        {
-                            platforms?.map((platform) => {
-                                return <option value={platform} key={platform} name="platforms"> {platform} </option>
-                            })}
-                    </datalist>
-
+                    </select>
+                    <label for="floatingSelect">Seleccione Plataforma/s</label>
                 </div>
 
 
-
-                <div>
-                    {/* <label>Género/s </label>
-                    <select onChange={(e) => handleSelectGenres(e)}>
-
+                <div class="form-floating mb-3">
+                    <select class="form-select"
+                        id="floatingSelect"
+                        aria-label="Floating label select example"
+                        onChange={(e) => handleSelectGenres(e)} >
                         {
                             genres?.map((genre) => {
                                 return <option value={genre} key={genre}> {genre} </option>
-                            })}
-                    </select> */}
+                            })
+                        }
+                    </select>
+                    <label for="floatingSelect">Seleccione Género/s</label>
+                </div>
 
-                    <label for="exampleDataList" class="form-label"></label>
-                    <input class="form-control"
-                        list="datalistOptions"
-                        id="exampleDataList"
-                        placeholder="Seleccione Género/s"
-                        onChange={(e) => handleSelectGenres(e)} />
-                    <datalist id="datalistOptions">
-                        {
-                            genres?.map((genre) => {
-                                return <option value={genre} key={genre}> {genre} </option>
-                            })}
-                    </datalist>
 
+                <div class="row d-flex justify-content-center">
+                    {input.genres &&
+                        input.genres.map(el => {
+                            return (
+                                <div class="col-sm-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title" key={el}>{el}</h5>
+                                        <button type="button"
+                                            class="btn-close"
+                                            aria-label="Close"
+                                            onClick={() => handleDeleteGenre(el)} ></button>
+
+                                    </div>
+                                </div>
+                            )
+                        })}
+
+
+
+                    <div class="row d-flex justify-content-center">
+
+                        {input.platforms &&
+                            input.platforms.map(el => {
+                                return (
+                                    <div class="col-sm-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title" key={el}>{el}</h5>
+                                            <button type="button"
+                                                class="btn-close"
+                                                aria-label="Close"
+                                                onClick={() => handleDeletePlatform(el)}></button>
+
+                                        </div>
+                                    </div>
+                                )
+                            })}
+
+                    </div>
 
                 </div>
 
-                <br/><br/>
+                <br /><br />
 
-                <div>
-                    <button className='boton' type='submit'>Crear Juego</button><br/><br/>
-                </div>
+                <div class="row">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <Link to='/home'> <button class="btn btn-link">Volver</button></Link><br />
 
-                <div>
-                    <Link to='/home'> <button className='boton'>Volver</button></Link><br/>
+                    </div>
+
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-light w-auto p-3" type='submit'>Crear Juego</button><br /><br />
+                    </div>
                 </div>
 
             </form>
 
-
-
-            {input.genres &&
-                input.genres.map(el => {
-                    return (
-                        <div>
-                            <h5 key={el}>{el}</h5>
-                            <button className='boton X'
-                                onClick={() => handleDeleteGenre(el)} > X </button>
-                        </div>
-                    )
-                })}
-
-            {input.platforms &&
-                input.platforms.map(el => {
-                    return (
-                        <div>
-                            <h5 key={el}>{el}</h5>
-                            <button className='boton X'
-                                onClick={() => handleDeletePlatform(el)} > X </button>
-                        </div>
-                    )
-                })}
-
-
-        </div>
-
-
+        </div >
 
     )
-
 
 }

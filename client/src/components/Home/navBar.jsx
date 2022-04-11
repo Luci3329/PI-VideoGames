@@ -46,26 +46,35 @@ export default function NavLuci() {
 
                 <div class="collapse navbar-collapse" id="navbarScroll">
 
-                    <div class="navbar-nav d-flex justify-content-center">
+                    <div class="container">
+                        <div class="row">
 
-                        <a class="nav-link" aria-current="page" href='/videogame'>Crea Tu Videojuego</a>
-                        <a class="nav-link" href="#" onClick={e => handleClick(e)}>Refrescar</a>
+                            <div class="col-8">
+                                <button class="btn btn-light w-100 p-2" type='submit' href='/videogame'>Crea Tu Videojuego</button>
 
+                            </div>
+
+                            <div class="col-1">
+                                <a class="nav-link" href="#" onClick={e => handleClick(e)}>Refrescar</a>
+                            </div>
+
+                            <div class="col col-lg-2">
+                                <form class="d-flex">
+                                    <input class="form-control me-2 w-auto p-2"
+                                        type="search" placeholder="Cuál es tu juego? "
+                                        aria-label="Search"
+                                        value={game}
+                                        onChange={e => handleInputChange(e)} />
+
+                                    <button class="btn btn-outline-success" type="submit"
+                                        onClick={e => handleSubmit(e)}> Buscar </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="d-flex justify-content-end" >
 
-                    <form class="d-flex">
-                        <input class="form-control me-2"
-                            type="search" placeholder="Cuál es tu juego? "
-                            aria-label="Search"
-                            value={game}
-                            onChange={e => handleInputChange(e)} />
 
-                        <button class="btn btn-outline-success" type="submit"
-                            onClick={e => handleSubmit(e)}> Buscar </button>
-                    </form>
-                    </div>
                 </div>
             </div>
         </nav>

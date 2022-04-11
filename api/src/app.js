@@ -33,14 +33,5 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
-/* server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-  if (req.originalUrl.includes('favicon.ico')) {
-    res.status(204).end()
-  }
-  next();  // AGREGADO POR DESESPERACIÓN 
-}); */
-
-
-
 
 module.exports = server;

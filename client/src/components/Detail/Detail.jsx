@@ -34,7 +34,7 @@ export default function Detail(props) {
 
                 <p class="card-text">
                     <h6>Fecha de Lanzamiento</h6>
-                    <span>{myVideogame.released}</span></p><br/>
+                    <span>{myVideogame.released?.slice(0, 10)}</span></p>
 
                 <p class="card-text">
                     <h6>Rating</h6>

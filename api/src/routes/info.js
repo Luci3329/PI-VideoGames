@@ -52,10 +52,9 @@ router.get('/', async (req, res) => {
 
     
 
-    const genresAll = await Genre.findAll({ // para la búsqueda por NOMBRE -> botón del front
-      attributes: ["name"] // [ {name: '..'} {name: '..'} ]
-    });
+    const genresAll = await Genre.findAll();
     const genres = genresAll.map(g => g.name)
+    
 
     return res.json({
       platforms,
