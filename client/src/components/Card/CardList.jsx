@@ -11,7 +11,7 @@ export default function CardList({ games }) {
         <div className='card1'>
 
             {games.map(g => {
-                if (g.name !== "Juego Inexistente") {
+                if (g.name !== "VideoGame no encontrado") {
 
                     return (
                         <Link to={'/videogame/' + g.id} >

@@ -53,8 +53,10 @@ router.get('/', async (req, res) => {
     
 
     const genresAll = await Genre.findAll();
+    //console.log(genresAll);
+
     const genres = genresAll.map(g => g.name)
-    
+    //console.log(genres);
 
     return res.json({
       platforms,

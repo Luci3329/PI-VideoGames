@@ -16,7 +16,7 @@ export default function Card({ name, background_image, rating, genres }) {
                         <img src={background_image} class="otra" /* style={{ width: "220px", height:"160px" }}  */alt={name} />
 
                         <div class="card-body">
-                            <p class="card-text" style={{ fontSize:"15px" }} ><strong>Género/s: </strong><br/>{genres.map(el => el).join(' - ')}</p>
+                            <p class="card-text" style={{ fontSize:"15px" }} ><strong>Género/s: </strong><br/>{genres.map(el => el.name).join(' - ')}</p>
                             <p class="card-text" style={{ fontSize:"15px", paddingTop:"-15px" }} ><strong>Rating: </strong>{rating}</p>
                         </div>
                     </div>

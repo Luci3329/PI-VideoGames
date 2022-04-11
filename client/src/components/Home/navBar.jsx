@@ -50,7 +50,8 @@ export default function NavLuci() {
                         <div class="row">
 
                             <div class="col-8">
-                                <button class="btn btn-light w-100 p-2" type='submit' href='/videogame'>Crea Tu Videojuego</button>
+                                <Link to='/videogame'>
+                                <button class="btn btn-light w-100 p-2" type='submit'>Crea Tu Videojuego</button></Link>
 
                             </div>
 

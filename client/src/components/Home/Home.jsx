@@ -134,7 +134,7 @@ export default function Home() {
 
             <div>
                 {
-                    allVideogames === "Juego Inexistente" ? <Error /> :
+                    allVideogames === "VideoGame no encontrado" ? <Error /> :
 
                         <CardList games={gamesPagActual} />
                 }
