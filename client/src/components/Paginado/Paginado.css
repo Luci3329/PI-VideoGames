@@ -1,25 +1,20 @@
 .page-item{
     cursor: pointer;
+    background-color: transparent;
+    
 }
 
-
-
-/* .paginado {
-    position:relative;
-    align-content: center;
-    width: auto;
+.page-link{
+    color: #FFFF00;
+    background-color: transparent;
+    font-weight: 600;
+    border: thin solid;
 }
 
-.number {
-    list-style: none;
-    display: inline-block;
-    border-radius: 10px;
-    background: linear-gradient(
-        180deg,#fd867d,#b1305c);
-    font-weight: 800;
+.page-link:hover,.page-link:focus{
+    font-weight: 600;
+    color: #FFFF00;
+    background-color:transparent;
+    border: #FFFF00;
+    box-shadow: 0 0 4px 3px #FFFF00;
 }
-
-.number p {
-    cursor: pointer;
-    padding: 8px;
-} */

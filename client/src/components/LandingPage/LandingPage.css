@@ -1,18 +1,4 @@
-html, body {
-    background-image: url('./images/genérico.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-}
 
-@media only screen and (max-width: 767px) {
-
-    body {
-    
-    background-image: url('./images/genérico.jpg');
-    
-    }
-}
 
 .container-fluid {
     display: flex;

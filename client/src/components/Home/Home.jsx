@@ -77,7 +77,9 @@ export default function Home() {
             </div>
 
             <br />
+            <div className='games'>
             <h1 className='Videogames'>Videogames</h1>
+            </div>
             <br />
 
             <div class="form-floating">

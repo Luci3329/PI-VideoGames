@@ -18,7 +18,7 @@
     color: black;
     border: thin solid;
     border-color:#FFFF00;
-    font-weight: 600;
+    font-weight: 600; 
 }
 
 .btn:hover {

@@ -4,10 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import {store} from './store/index'; // sin llaves xq lo exporté default
+import {store} from './store/index'; 
 
-// Provider store -> todos los componentes envueltos PUEDEN ACCEDER AL STORE (si se suscriben)
-// <BrowserRouter> ?? luego del Provider (encierra a <App/>)
+// Provider store -> todos los componentes envueltos PUEDEN ACCEDER AL STORE
 
 ReactDOM.render(
   <Provider store = { store }>
