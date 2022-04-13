@@ -1,0 +1,44 @@
+.navbar{
+    border: thin solid;
+    border-color:#FFFF00;
+}
+
+.navbar-brand{
+    color: #FFFF00;
+    background-color: #FFFF00;
+    
+}
+
+.nav-link{
+    color: #FFFF00;
+}
+
+.btn{
+    background-color:#FFFF00;
+    color: black;
+    border: thin solid;
+    border-color:#FFFF00;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color:blue;
+    color: black;
+    border-color:transparent;
+}
+
+.form-control{
+    background-color:#FFFF00;
+    color: black;
+    border: thin solid;
+    border-color:#FFFF00;
+}
+
+.form-control:hover,.form-control:focus{
+    font-weight: 600;
+    color: #FFFF00;
+    background-color:transparent;
+    border: blue;
+    box-shadow: 0 0 4px 3px blue;
+}
+    

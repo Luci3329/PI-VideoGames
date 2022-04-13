@@ -10,7 +10,7 @@ export default function Card({ name, background_image, rating, genres }) {
             <div class="row">
 
                 <div class="col-md-2">
-                    < div class="card" style={{ width: "15rem", height:"20em" }} >
+                    < div class="card" style={{ width: "15rem", height:"22em" }} >
 
                         <h5 class="card-title text-center">{name}</h5>
                         <img src={background_image} class="otra" /* style={{ width: "220px", height:"160px" }}  */alt={name} />
@@ -22,7 +22,7 @@ export default function Card({ name, background_image, rating, genres }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
 
 
 

@@ -23,13 +23,12 @@ module.exports = (sequelize) => {
     },
 
     description : {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
 
     released : {
-      type: DataTypes.DATE
-      /* defaultValue: format('YYYY-MM-DD') */
+      type: DataTypes.STRING
     },
 
     rating : {

@@ -6,33 +6,32 @@ a:link {text-decoration:none}
 }
 
 .card-title{
-    margin: 10px;
+    /* Arriba | Derecha | Abajo | Izquierda */
+    margin: 5px, 2px, 0, 2px;
+    padding: 15px;
 }
+
 
 .card1{
     display:grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fill, 12rem);
     gap: 4rem;
-    margin-top: 1rem;
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 0px; 
+    padding: 20px 0 20px -20px;
     text-align: center;
-}
-
-.card-title{
-    padding: 15px;
 }
 
 .row{
     border: 20px;
+    /* border: 20px 0 20px 0; */
 }
 
 .otra{
     width: 230px;
     height: 130px;
+    /* Arriba | Derecha | Abajo | Izquierda */
     padding: 5px;
+    
 }
 
+  

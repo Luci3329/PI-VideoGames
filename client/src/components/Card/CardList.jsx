@@ -6,7 +6,7 @@ import './Card.css'
 export default function CardList({ games }) {
     // no necesito traerme ningún estado xq ya tengo la lógica en el Home
 
-    return (
+    return ( 
 
         <div className='card1'>
 

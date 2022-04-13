@@ -36,7 +36,7 @@ export default function NavLuci() {
 
     return (
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-md navbar-light .bg-transparent">
 
             <div class="container-fluid">
                 <a class="navbar-brand">-Luci App- </a>
@@ -47,6 +47,7 @@ export default function NavLuci() {
                 <div class="collapse navbar-collapse" id="navbarScroll">
 
                     <div class="container">
+                    {/* <div class="nav ms-auto flex-colum flex-md-row "> */}
                         <div class="row">
 
                             <div class="col-8">

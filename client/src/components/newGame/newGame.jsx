@@ -47,13 +47,6 @@ export default function NewGame() {
         }) // DINÁMICO -> va a ir tomando los valores de los inputs y los va modificando según lo escrito
     }
 
-    /*  function handleChangeFecha(e){ // sino la fecha viene 
-         setInput({
-             ...input,
-             [e.target.name]: e.target.value.substring(0, 10)
-         })
-     } */
-
     function handleSelectGenres(e) {
         setInput({
             ...input,
@@ -100,6 +93,18 @@ export default function NewGame() {
             genres: input.genres.filter(genre => genre !== el)
         })
     }
+
+// ---------------- PARA ESTABLECER COMO MÍNIMO LA FECHA ACTUAL EN EL CALENDARIO
+    let fechaActual = new Date();
+    let año = fechaActual.getFullYear();
+    let dia = fechaActual.getDate();
+    let mes = fechaActual.getMonth() + 1; // xq Enero es 0
+
+    dia = ( '0' + dia ).slice(-2); 
+    mes = ( '0' + mes ).slice(-2); 
+
+   const hoy = `${año}-${mes}-${dia}`
+// ----------------------------------------------------------------------------------
 
     useEffect(() => {  // cuando el componente se monte -> traigo todo
         dispatch(listGenres())
@@ -162,7 +167,7 @@ export default function NewGame() {
                         aria-label="Fecha de Lanzamiento"
                         placeholder='aaaa - mm - dd'
                         id="released"
-                        min="2022-04-08"
+                        min={hoy}
                         max="2025-12-31"
                         value={input.released}
                         name='released'

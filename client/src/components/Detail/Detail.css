@@ -2,7 +2,7 @@
 /* Configuración Móvil
 ----------------------------- */
 
-@media (min-width: 500px) {
+@media (min-width: 375px) {
     .contenedor {
         grid-template-areas:
             "titulo"

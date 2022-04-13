@@ -1,29 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from './images/Landing.jpeg'
-//import './LandingPage.css'
+import imgLanding from './images/landing.jpg';
+import './LandingPage.css'
 
 
 export default function LandingPage() {
     return (
-        <div className='container'>
-         
-         <img className='fotop' src={img} alt="hola" />
+        <div class="container-fluid h-100">
+            <div class="row w-100 align-items-center">
 
-         
- 
+                <div class="text">
 
-            <div className='boton'>
-                
-                <Link to='/home'>
-                    <button className="bp">Home</button>
-                </Link>
+                    <h1>BIENVENIDOS A <strong>VIDEOGAMES APP</strong> </h1>
+                    <h4>By Luci Machuca</h4>
+
+                    <Link to='/home'>
+                        <button class="bLanding" type="button">Ingresar</button></Link>
+                </div>
+
             </div>
-
-            
-
-
         </div>
     )
 }
-    
