@@ -34,7 +34,7 @@ function rootReducer(state = initialState, action) {   // acá van a ir todas mi
 
         case 'ORDER_BY_GAME':
 
-            let sortedArr = action.payload === '5' ?
+            let gameArr = action.payload === 'asc' ?
                 state.videogames.sort(function (a, b) {
                     if (a.name > b.name) return 1;
                     if (b.name > a.name) return -1;
@@ -48,8 +48,31 @@ function rootReducer(state = initialState, action) {   // acá van a ir todas mi
 
             return {
                 ...state,
-                videogames: sortedArr
+                videogames: gameArr
             }
+
+        case 'ORDER_BY_RATING':
+
+            let ratingArr = [];
+            if (action.payload === "asc") {
+                ratingArr = state.videogames.sort(function (a, b) {
+                    if (a.rating > b.rating) return 1;
+                    if (b.rating > a.rating) return -1;
+                    return 0;
+                });
+            } else if (action.payload === "desc") {
+                ratingArr = state.videogames.sort(function (a, b) {
+                    if (a.rating > b.rating) return -1;
+                    if (b.rating > a.rating) return 1;
+                    return 0;
+                });
+            } else {
+                ratingArr = state.videogames;
+            }
+            return {
+                ...state,
+                videogames: ratingArr
+            };
 
 
         case 'LIST_GENRES': // me traigo todo de mi ruta getInfo

@@ -2,9 +2,10 @@ import React from 'react';
 import { useEffect } from 'react'; //useEffect llena el estado cuando se monta el componente
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCreated, orderByGame, listGenres, filterByGenres } from '../../actions';
+import { filterCreated, orderByGame, orderByRating, listGenres, filterByGenres } from '../../actions';
 import CardList from '../Card/CardList';
 import Paginado from '../Paginado/Paginado';
+import SortSelect from '../SortSelect/SortSelect';
 import './Home.css';
 import NavLuci from './navBar.jsx';
 import Error from './Error.jsx';
@@ -30,6 +31,27 @@ export default function Home() {
 
     // *********** ORDENAMIENTO ASC - DES  ****************
     const [order, setOrder] = useState('')
+    const [sort, setSort] = useState('Orden Por Juego');
+
+    function handleSort(e) {
+        e.preventDefault();
+        if (sort === "Orden Por Juego") setSort("Orden Por Rating");
+        if (sort === "Orden Por Rating") setSort("Orden Por Juego")
+    };
+
+    function orderGame(e) { // ordenamiento por nombre
+        dispatch(orderByGame(e.target.value))
+        setPagActual(1);
+        setOrder(e.target.value)
+    };
+
+
+    function orderRating(e) { // ordenamiento por rating
+        dispatch(orderByRating(e.target.value))
+        setPagActual(1);
+        setOrder(e.target.value)
+    };
+
 
     //  ********** PARA EL PAGINADO **********************
     const [pagActual, setPagActual] = useState(1)
@@ -51,17 +73,12 @@ export default function Home() {
         dispatch(listGenres())
     }, []);
 
+    // FILTRO SEGÚN ORIGEN
     function handleFilterByCreated(e) {
         dispatch(filterCreated(e.target.value))
     };
 
-    function handleSort(e) {
-        e.preventDefault();
-        dispatch(orderByGame(e.target.value))
-        setPagActual(1);
-        setOrder(`Ordenado ${e.target.value}`)
-    };
-
+    // FILTRO POR GÉNERO
     function handleFilterByGenres(e) {
         e.preventDefault();
         dispatch(filterByGenres(e.target.value))
@@ -83,13 +100,13 @@ export default function Home() {
             <br />
 
             <div class="row g-4">
-                <div class="col-md">
+                <div class="col-md-3">
                     <div class="form-floating">
                         <select class="form-select"
                             id="floatingSelect"
                             aria-label="Floating label select example"
                             onChange={e => handleFilterByCreated(e)}>
-                            <option selected>Todos Los Juegos</option>
+                            {/* <option selected>Todos Los Juegos</option> */}
                             <option value="1">Todos Los Juegos</option>
                             <option value="2">Creaciones</option>
                         </select>
@@ -97,13 +114,13 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div class="col-md">
+                <div class="col-md-3">
                     <div class="form-floating">
                         <select class="form-select"
                             id="floatingSelect"
                             aria-label="Floating label select example"
                             onChange={e => handleFilterByGenres(e)}>
-                            <option value="4">Todos Los Géneros</option>
+                            {/* <option value="4">Todos Los Géneros</option> */}
                             {sortGenres &&
                                 sortGenres.map(el => (
                                     <option
@@ -114,10 +131,9 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div class="col-md">
+                {/* <div class="col-md">
                     <div class="form-floating">
                         <select class="form-select"
-                            indicator style= {{ color: "#FFFF00"}}
                             id="floatingSelect"
                             aria-label="Floating label select example"
                             onChange={e => handleSort(e)}>
@@ -127,8 +143,37 @@ export default function Home() {
                         </select>
                         <label className='fuerte' for="floatingSelect">Ordenamiento</label>
                     </div>
-                </div>
+                </div> */}
 
+                <div class="col-md-3">
+                    
+
+                        <button type="button"
+                            class="btn"
+                            style={{ width: "70%" }}
+                            value={sort}
+                            onClick={(e) => handleSort(e)}
+                        >{sort}</button>
+
+                        {sort === "Orden Por Juego" ? (
+                            
+                                <SortSelect
+                                    handleSort={orderGame}
+                                    sortDescription="Orden Alfabético"
+                                />
+                           
+                        ) : (
+                            
+                                <SortSelect
+                                    handleSort={orderRating}
+                                    sortDescription="Orden Alfabético"
+                                />
+                           
+                        )}
+
+
+                    
+                </div>
             </div>
 
             <br />

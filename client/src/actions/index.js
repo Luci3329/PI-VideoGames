@@ -28,9 +28,18 @@ export function filterCreated(payload) {
     }
 }
 
+// ORDEN ALFABÉTICO POR JUEGO
 export function orderByGame(payload) {
     return {
         type: 'ORDER_BY_GAME',
+        payload
+    }
+}
+
+// ORDEN ALFABÉTICO POR RATING
+export function orderByRating(payload){
+    return{
+        type: 'ORDER_BY_RATING',
         payload
     }
 }
