@@ -1,5 +1,5 @@
 .btn {
-    width: 100px;
+  width: 100px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
@@ -11,82 +11,94 @@
   left: 0;
   letter-spacing: 5px;
   margin: 1% 0 2% 0;
-  position:static;
+  position: static;
   text-align: center;
   text-transform: uppercase;
   top: 50%;
   width: 100%;
-  animation: move linear 2000ms infinite;  
+  animation: move linear 2000ms infinite
 }
 
 @keyframes move {
-    0% {
-      text-shadow:
-        4px -4px 0 hsla(60, 100%, 50%, 1), 
-        3px -3px 0 hsla(60, 100%, 50%, 1), 
-        2px -2px 0 hsla(60, 100%, 50%, 1), 
-        1px -1px 0 hsla(60, 100%, 50%, 1),
-        -4px 4px 0 hsla(240, 100%, 50%, 1), 
-        -3px 3px 0 hsla(240, 100%, 50%, 1), 
-        -2px 2px 0 hsla(240, 100%, 50%, 1), 
-        -1px 1px 0 hsla(240, 100%, 50%, 1)
-      ;
-    }
-    25% {    
-      text-shadow:      
-        -4px -4px 0 hsla(240, 100%, 50%, 1), 
-        -3px -3px 0 hsla(240, 100%, 50%, 1), 
-        -2px -2px 0 hsla(240, 100%, 50%, 1), 
-        -1px -1px 0 hsla(240, 100%, 50%, 1), 
-        4px -4px 0 hsla(60, 100%, 50%, 1), 
-        3px -3px 0 hsla(60, 100%, 50%, 1), 
-        2px -2px 0 hsla(60, 100%, 50%, 1), 
-        1px -1px 0 hsla(60, 100%, 50%, 1),    
-      ;
-    }
-
-    /* 0 rojo / 180 verde
-    60 / 240 */
-
-    50% {
-      text-shadow:
-      -4px -4px 0 hsla(60, 100%, 50%, 1), 
-      -3px -3px 0 hsla(60, 100%, 50%, 1), 
-      -2px -2px 0 hsla(60, 100%, 50%, 1), 
-      -1px -1px 0 hsla(60, 100%, 50%, 1), 
-      4px -4px 0 hsla(240, 100%, 50%, 1), 
-      3px -3px 0 hsla(240, 100%, 50%, 1), 
-      2px -2px 0 hsla(240, 100%, 50%, 1), 
-      1px -1px 0 hsla(240, 100%, 50%, 1),  
-      ;
-    }
-    75% {
-      text-shadow:
-        4px 4px 0 hsla(240, 100%, 50%, 1),  
-        3px 3px 0 hsla(240, 100%, 50%, 1),  
-        2px 2px 0 hsla(240, 100%, 50%, 1),  
-        1px 1px 0 hsla(240, 100%, 50%, 1), 
-        -4px -4px 0 hsla(60, 100%, 50%, 1), 
-        -3px -3px 0 hsla(60, 100%, 50%, 1), 
-        -2px -2px 0 hsla(60, 100%, 50%, 1), 
-        -1px -1px 0 hsla(60, 100%, 50%, 1),      
-      ;
-    }
-    100% {
-      text-shadow:
-        4px -4px 0 hsla(60, 100%, 50%, 1), 
-        3px -3px 0 hsla(60, 100%, 50%, 1), 
-        2px -2px 0 hsla(60, 100%, 50%, 1),  
-        1px -1px 0 hsla(60, 100%, 50%, 1), 
-        -4px 4px 0 hsla(240, 100%, 50%, 1),   
-        -3px 3px 0 hsla(240, 100%, 50%, 1),   
-        -2px 2px 0 hsla(240, 100%, 50%, 1),  
-        -1px 1px 0 hsla(240, 100%, 50%, 1), 
-      ;
-    }  
+  0% {
+    text-shadow:
+      4px -4px 0 hsla(60, 100%, 50%, 1),
+      3px -3px 0 hsla(60, 100%, 50%, 1),
+      2px -2px 0 hsla(60, 100%, 50%, 1),
+      1px -1px 0 hsla(60, 100%, 50%, 1),
+      -4px 4px 0 hsla(240, 100%, 50%, 1),
+      -3px 3px 0 hsla(240, 100%, 50%, 1),
+      -2px 2px 0 hsla(240, 100%, 50%, 1),
+      -1px 1px 0 hsla(240, 100%, 50%, 1);
   }
+
+  25% {
+    text-shadow:
+      -4px -4px 0 hsla(240, 100%, 50%, 1),
+      -3px -3px 0 hsla(240, 100%, 50%, 1),
+      -2px -2px 0 hsla(240, 100%, 50%, 1),
+      -1px -1px 0 hsla(240, 100%, 50%, 1),
+      4px 4px 0 hsla(60, 100%, 50%, 1),
+      3px 3px 0 hsla(60, 100%, 50%, 1),
+      2px 2px 0 hsla(60, 100%, 50%, 1),
+      1px 1px 0 hsla(60, 100%, 50%, 1),
+    ;
+  }
+
+  50% {
+    text-shadow:
+      -4px 4px 0 hsla(60, 100%, 50%, 1),
+      -3px 3px 0 hsla(60, 100%, 50%, 1),
+      -2px 2px 0 hsla(60, 100%, 50%, 1),
+      -1px 1px 0 hsla(60, 100%, 50%, 1),
+      4px -4px 0 hsla(240, 100%, 50%, 1),
+      3px -3px 0 hsla(240, 100%, 50%, 1),
+      2px -2px 0 hsla(240, 100%, 50%, 1),
+      1px -1px 0 hsla(240, 100%, 50%, 1),
+    ;
+  }
+
+  75% {
+    text-shadow:
+      4px 4px 0 hsla(240, 100%, 50%, 1),
+      3px 3px 0 hsla(240, 100%, 50%, 1),
+      2px 2px 0 hsla(240, 100%, 50%, 1),
+      1px 1px 0 hsla(240, 100%, 50%, 1),
+      -4px -4px 0 hsla(60, 100%, 50%, 1),
+      -3px -3px 0 hsla(60, 100%, 50%, 1),
+      -2px -2px 0 hsla(60, 100%, 50%, 1),
+      -1px -1px 0 hsla(60, 100%, 50%, 1),
+    ;
+  }
+
+  100% {
+    text-shadow:
+      4px -4px 0 hsla(60, 100%, 50%, 1),
+      3px -3px 0 hsla(60, 100%, 50%, 1),
+      2px -2px 0 hsla(60, 100%, 50%, 1),
+      1px -1px 0 hsla(60, 100%, 50%, 1),
+      -4px 4px 0 hsla(240, 100%, 50%, 1),
+      -3px 3px 0 hsla(240, 100%, 50%, 1),
+      -2px 2px 0 hsla(240, 100%, 50%, 1),
+      -1px 1px 0 hsla(240, 100%, 50%, 1),
+    ;
+  }
+}
+
+
+.form-select{
+  background-color: transparent;
+  border: thin solid;
+  border-color:#FFFF00;
+  width: 70%;
+  margin: 5px;
   
   
+}
+
+.fuerte{
+  color: #FFFF00;
+}
 
 
 
@@ -100,7 +112,13 @@
 
 
 
-/* .bp{
+
+
+
+
+
+
+  /* .bp{
     width: 30%;
     min-width: 205px;
     padding: 5px 10px;

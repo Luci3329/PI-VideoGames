@@ -78,51 +78,58 @@ export default function Home() {
 
             <br />
             <div className='games'>
-            <h1 className='Videogames'>Videogames</h1>
+                <h1 className='Videogames'>Videogames</h1>
             </div>
             <br />
 
-            <div class="form-floating">
-                <select class="form-select"
-                    id="floatingSelect"
-                    aria-label="Floating label select example"
-                    onChange={e => handleFilterByCreated(e)}>
-                    <option selected>Todos Los Juegos</option>
-                    <option value="1">Todos Los Juegos</option>
-                    <option value="2">Creaciones</option>
-                </select>
-                <label for="floatingSelect">Filtro por Origen</label>
+            <div class="row g-4">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select"
+                            id="floatingSelect"
+                            aria-label="Floating label select example"
+                            onChange={e => handleFilterByCreated(e)}>
+                            <option selected>Todos Los Juegos</option>
+                            <option value="1">Todos Los Juegos</option>
+                            <option value="2">Creaciones</option>
+                        </select>
+                        <label className='fuerte' for="floatingSelect">Filtro por Origen</label>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select"
+                            id="floatingSelect"
+                            aria-label="Floating label select example"
+                            onChange={e => handleFilterByGenres(e)}>
+                            <option value="4">Todos Los Géneros</option>
+                            {sortGenres &&
+                                sortGenres.map(el => (
+                                    <option
+                                        value={el}>{el}</option>
+                                ))}
+                        </select>
+                        <label className='fuerte' for="floatingSelect">Filtro por Género</label>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select"
+                            indicator style= {{ color: "#FFFF00"}}
+                            id="floatingSelect"
+                            aria-label="Floating label select example"
+                            onChange={e => handleSort(e)}>
+                            <option selected>abc</option>
+                            <option value="5">Ascendente</option>
+                            <option value="6">Descendente</option>
+                        </select>
+                        <label className='fuerte' for="floatingSelect">Ordenamiento</label>
+                    </div>
+                </div>
+
             </div>
-
-
-            <div class="form-floating">
-                <select class="form-select"
-                    id="floatingSelect"
-                    aria-label="Floating label select example"
-                    onChange={e => handleFilterByGenres(e)}>
-                    <option value="4">Todos Los Géneros</option>
-                    {sortGenres &&
-                        sortGenres.map(el => (
-                            <option
-                                value={el}>{el}</option>
-                        ))}
-                </select>
-                <label for="floatingSelect">Filtro por Género</label>
-            </div>
-
-
-            <div class="form-floating">
-                <select class="form-select"
-                    id="floatingSelect"
-                    aria-label="Floating label select example"
-                    onChange={e => handleSort(e)}>
-                    <option selected>abc</option>
-                    <option value="5">Ascendente</option>
-                    <option value="6">Descendente</option>
-                </select>
-                <label for="floatingSelect">Ordenamiento</label>
-            </div>
-
 
             <br />
             <Paginado
@@ -141,8 +148,8 @@ export default function Home() {
                         <CardList games={gamesPagActual} />
                 }
             </div>
-        
-        
+
+
 
         </div >
     )

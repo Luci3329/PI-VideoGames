@@ -7,9 +7,9 @@ export default function Card({ name, background_image, rating, genres }) {
     return (
 
         <div class="luci">
-            <div class="row">
+            <div class="row"> 
 
-                <div class="col-md-2">
+                <div class="todo col-md-2">
                     < div class="card" style={{ width: "15rem", height:"22em" }} >
 
                         <h5 class="card-title text-center">{name}</h5>

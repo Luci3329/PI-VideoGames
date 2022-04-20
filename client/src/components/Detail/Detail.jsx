@@ -33,17 +33,17 @@ export default function Detail(props) {
             <div class="card-body">
 
                 <p class="card-text">
-                    <h6>Fecha de Lanzamiento</h6>
+                    <h6 className='subtitulo'>Fecha de Lanzamiento</h6>
                     <span>{myVideogame.released?.slice(0, 10)}</span></p>
 
                 <p class="card-text">
-                    <h6>Rating</h6>
+                    <h6 className='subtitulo'>Rating</h6>
                     <span>{myVideogame.rating}</span></p>
             </div>
 
             <div className='card-body2'>
                 <ul class="card-text">
-                    <h6>Plataformas</h6>
+                    <h6 className='subtitulo'>Plataformas</h6>
                     {
                         myVideogame.platforms &&
                         myVideogame.platforms?.map(elem => <li className='lista' key={elem}><span className='viñ'>{elem}</span></li>)
@@ -53,7 +53,7 @@ export default function Detail(props) {
 
             <div className='card-body3'>
                 <ul class="card-text">
-                    <h6>Géneros</h6>
+                    <h6 className='subtitulo'>Géneros</h6>
                     {
                         myVideogame.genres &&
                         myVideogame.genres?.map(gen => <li className='lista' key={gen.id} ><span className='viñ'>{gen.name}</span></li>)

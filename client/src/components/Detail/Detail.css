@@ -35,7 +35,7 @@
         grid-template-rows: 1fr;
 
     border: solid;
-    border-color: black;
+    border-color: #FFFF00;
     margin: 5%;
     border-radius: 2%;
 }
@@ -46,6 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #FFFF00;
 }
 
 .descripcion {
@@ -55,14 +56,18 @@
     justify-content: center;
     text-align: justify;
     margin: 20px;
+    color: #FFFF00;
 }
 
 .card-body {
     grid-area: card-body;
     display: block;
+    width: 60%;
     align-items: center;
     justify-content: center;
-    margin: 2px;
+    /* Arriba | Derecha | Abajo | Izquierda */
+    margin: 2px 2px 2px 100px;
+    color: #FFFF00;
 }
 
 .card-body2 {
@@ -71,6 +76,7 @@
     align-items: center;
     justify-content: center;
     margin: 2px;
+    color: #FFFF00;
 }
 
 .card-body3 {
@@ -79,6 +85,7 @@
     align-items: center;
     justify-content: center;
     margin: 2px;
+    color: #FFFF00;
 }
 
 .volver {
@@ -91,4 +98,9 @@
     height: 250px;
     padding-right: 15px;
     border-radius: 2%;
+}
+
+.subtitulo{
+    border: 2px solid #FFFF00;
+    padding: 5px;
 }
