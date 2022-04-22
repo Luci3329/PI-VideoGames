@@ -6,11 +6,11 @@
 }
 
 
-.text{
+/* .text{
     position:relative;
     align-items: center;
     
-}
+} */
 
 .text h1{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -18,9 +18,9 @@
     color: #FFFF00;
     
     font-weight: 300;
-    margin-top: 0;
+    /* margin-top: 0;
     margin-block-end: 10px;
-    padding-top: 21%;
+    padding-top: 21%; */
     
     
 }

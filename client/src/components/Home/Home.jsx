@@ -94,59 +94,50 @@ export default function Home() {
             </div>
 
             <br />
-            <div className='games'>
-                <h1 className='Videogames'>Videogames</h1>
+            <div className='conteiner games'>
+                <div class="row">
+                    <div class='col-8  col-md-12 display-1 display-md-3 display-lg-4'>
+                        <h1 className='Videogames'>Videogames</h1>
+                    </div>
+                </div>
             </div>
             <br />
 
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="form-floating">
-                        <select class="form-select"
-                            id="floatingSelect"
-                            aria-label="Floating label select example"
-                            onChange={e => handleFilterByCreated(e)}>
-                            {/* <option selected>Todos Los Juegos</option> */}
-                            <option value="1">Todos Los Juegos</option>
-                            <option value="2">Creaciones</option>
-                        </select>
-                        <label className='fuerte' for="floatingSelect">Filtro por Origen</label>
-                    </div>
-                </div>
+            <div class="container">
+                <div class="row g-4">
 
-                <div class="col-md-3">
-                    <div class="form-floating">
-                        <select class="form-select"
-                            id="floatingSelect"
-                            aria-label="Floating label select example"
-                            onChange={e => handleFilterByGenres(e)}>
-                            {/* <option value="4">Todos Los Géneros</option> */}
-                            {sortGenres &&
-                                sortGenres.map(el => (
-                                    <option
-                                        value={el}>{el}</option>
-                                ))}
-                        </select>
-                        <label className='fuerte' for="floatingSelect">Filtro por Género</label>
+                    <div class="col-md-3">
+                        <div class="form-floating">
+                            <select class="form-select"
+                                id="floatingSelect"
+                                aria-label="Floating label select example"
+                                onChange={e => handleFilterByCreated(e)}>
+                                {/* <option selected>Todos Los Juegos</option> */}
+                                <option value="1">Todos Los Juegos</option>
+                                <option value="2">Creaciones</option>
+                            </select>
+                            <label className='fuerte' for="floatingSelect">Filtro por Origen</label>
+                        </div>
                     </div>
-                </div>
 
-                {/* <div class="col-md">
-                    <div class="form-floating">
-                        <select class="form-select"
-                            id="floatingSelect"
-                            aria-label="Floating label select example"
-                            onChange={e => handleSort(e)}>
-                            <option selected>abc</option>
-                            <option value="5">Ascendente</option>
-                            <option value="6">Descendente</option>
-                        </select>
-                        <label className='fuerte' for="floatingSelect">Ordenamiento</label>
+                    <div class="col-md-3">
+                        <div class="form-floating">
+                            <select class="form-select"
+                                id="floatingSelect"
+                                aria-label="Floating label select example"
+                                onChange={e => handleFilterByGenres(e)}>
+                                {/* <option value="4">Todos Los Géneros</option> */}
+                                {sortGenres &&
+                                    sortGenres.map(el => (
+                                        <option
+                                            value={el}>{el}</option>
+                                    ))}
+                            </select>
+                            <label className='fuerte' for="floatingSelect">Filtro por Género</label>
+                        </div>
                     </div>
-                </div> */}
 
-                <div class="col-md-3">
-                    
+                    <div class="col-md-3">
 
                         <button type="button"
                             class="btn"
@@ -156,23 +147,23 @@ export default function Home() {
                         >{sort}</button>
 
                         {sort === "Orden Por Juego" ? (
-                            
-                                <SortSelect
-                                    handleSort={orderGame}
-                                    sortDescription="Orden Alfabético"
-                                />
-                           
+
+                            <SortSelect
+                                handleSort={orderGame}
+                                sortDescription="Orden Alfabético"
+                            />
+
                         ) : (
-                            
-                                <SortSelect
-                                    handleSort={orderRating}
-                                    sortDescription="Orden Alfabético"
-                                />
-                           
+
+                            <SortSelect
+                                handleSort={orderRating}
+                                sortDescription="Orden Alfabético"
+                            />
+
                         )}
 
+                    </div>
 
-                    
                 </div>
             </div>
 

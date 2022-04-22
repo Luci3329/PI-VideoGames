@@ -18,57 +18,74 @@ export default function Detail(props) {
 
     return (
 
-        <div className='contenedor'>
+        <div class='conteiner m-4'>
+            <div class='row titulo'>
 
-            <div className='titulo'>
-                <h3 class="card-title">{myVideogame.name}</h3>
+                <div class="col-12 m-2">
+                    <h3 class="card-title">{myVideogame.name}</h3>
+                </div>
+
+                <div class="col-12 m-2 descripcion">
+                    <div class="row">
+                        <div class="col-12 col-md-6 text-center">
+                            <img src={myVideogame.background_image} class="card-img-top" align="left" alt="imagen" />
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <p class='texto' lang="es">{myVideogame.description}</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <div class="row">
+
+                        <div class="col-12 col-md-4 mt-3 card-body">
+
+                            <p class="card-text">
+                                <h6 class='subtitulo'>Fecha de Lanzamiento</h6>
+                                <span>{myVideogame.released?.slice(0, 10)}</span></p>
+
+                            <p class="card-text">
+                                <h6 className='subtitulo'>Rating</h6>
+                                <span>{myVideogame.rating}</span></p>
+                        </div>
+
+                        <div class='col-12 col-md-4 mt-3 card-body2'>
+                            <ul class="card-text">
+                                <h6 class='subtitulo'>Plataformas</h6>
+                                {
+                                    myVideogame.platforms &&
+                                    myVideogame.platforms?.map(elem => <li className='lista' key={elem}><span className='viñ'>{elem}</span></li>)
+                                }
+                            </ul>
+                        </div>
+
+                        <div class='col-12 col-md-4 mt-3 card-body3'>
+                            <ul class="card-text">
+                                <h6 class='subtitulo'>Géneros</h6>
+                                {
+                                    myVideogame.genres &&
+                                    myVideogame.genres?.map(gen => <li className='lista' key={gen.id} ><span className='viñ'>{gen.name}</span></li>)
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-12 mt-4 volver'>
+                    <Link to='/home'>
+                        <button class="btn btn-light" type="button">Volver</button></Link>
+                </div>
+
+
+
             </div>
-
-
-            <div class="descripcion">
-                <p className='texto' lang="es"><img src={myVideogame.background_image} class="card-img-top" align="left" alt="imagen" />
-                    {myVideogame.description}</p>
-            </div>
-
-            <div class="card-body">
-
-                <p class="card-text">
-                    <h6 className='subtitulo'>Fecha de Lanzamiento</h6>
-                    <span>{myVideogame.released?.slice(0, 10)}</span></p>
-
-                <p class="card-text">
-                    <h6 className='subtitulo'>Rating</h6>
-                    <span>{myVideogame.rating}</span></p>
-            </div>
-
-            <div className='card-body2'>
-                <ul class="card-text">
-                    <h6 className='subtitulo'>Plataformas</h6>
-                    {
-                        myVideogame.platforms &&
-                        myVideogame.platforms?.map(elem => <li className='lista' key={elem}><span className='viñ'>{elem}</span></li>)
-                    }
-                </ul>
-            </div>
-
-            <div className='card-body3'>
-                <ul class="card-text">
-                    <h6 className='subtitulo'>Géneros</h6>
-                    {
-                        myVideogame.genres &&
-                        myVideogame.genres?.map(gen => <li className='lista' key={gen.id} ><span className='viñ'>{gen.name}</span></li>)
-                    }
-                </ul>
-            </div>
-            <div className='volver'>
-                <Link to='/home'>
-                    <button class="btn btn-light" type="button">Volver</button></Link>
-            </div>
-
-
-
-
         </div >
+
+
     )
 }
 

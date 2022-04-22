@@ -6,23 +6,24 @@ export default function Card({ name, background_image, rating, genres }) {
 
     return (
 
-        <div class="luci">
-            <div class="row"> 
+        <div class="container-fluid luci">
+            <div class="row">
 
                 <div class="todo col-md-2">
-                    < div class="card" style={{ width: "15rem", height:"22em" }} >
+                    < div class="card" style={{ width: "15rem", height: "22em" }} >
 
+                        <img src={background_image} class="otra" /* style={{ width: "220px", height:"160px" }}  */ alt={name} />
                         <h5 class="card-title text-center">{name}</h5>
-                        <img src={background_image} class="otra" /* style={{ width: "220px", height:"160px" }}  */alt={name} />
 
                         <div class="card-body">
-                            <p class="card-text" style={{ fontSize:"15px" }} ><strong>Género/s: </strong><br/>{genres.map(el => el.name).join(' - ')}</p>
-                            <p class="card-text" style={{ fontSize:"15px", paddingTop:"-15px" }} ><strong>Rating: </strong>{rating}</p>
+                            
+                            <p class="card-text" style={{ fontSize: "15px" }} ><strong>Género/s: </strong><br />{genres.map(el => el.name).join(' - ')}</p>
+                            <p class="card-text" style={{ fontSize: "15px", paddingTop: "-15px" }} ><strong>Rating: </strong>{rating}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
 
 
 

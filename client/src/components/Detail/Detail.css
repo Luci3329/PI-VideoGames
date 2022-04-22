@@ -1,106 +1,42 @@
 
-/* Configuración Móvil
------------------------------ */
-
-@media (min-width: 375px) {
-    .contenedor {
-        grid-template-areas:
-            "titulo"
-            "descripcion"
-            "card-body"
-            "card-body2"
-            "card-body3"
-            "volver";
-
-        /* grid-template-columns: 1fr 1fr 1fr;    
-        grid-template-rows: 1fr; */
-    }
-
-}
-
-/* Configuración Para Escritorio */ 
-
-.contenedor {
-    display: grid;
-    grid-gap: 2px;
-    justify-content: center;
-
-    grid-template-areas:
-    "titulo titulo titulo"
-    "descripcion descripcion descripcion"
-    "card-body card-body2 card-body3"
-    "volver volver volver";
-
-        grid-template-columns: 1fr 1fr 1fr;    
-        grid-template-rows: 1fr;
-
-    border: solid;
-    border-color: #FFFF00;
-    margin: 5%;
-    border-radius: 2%;
-}
-
-
 .titulo {
-    grid-area: titulo;
-    display: flex;
     align-items: center;
     justify-content: center;
     color: #FFFF00;
 }
 
 .descripcion {
-    grid-area: descripcion;
-    display: flex;
     align-items:center;
     justify-content: center;
     text-align: justify;
-    margin: 20px;
+    /* margin: 20px; */
     color: #FFFF00;
 }
 
 .card-body {
-    grid-area: card-body;
-    display: block;
-    width: 60%;
     align-items: center;
     justify-content: center;
     /* Arriba | Derecha | Abajo | Izquierda */
-    margin: 2px 2px 2px 100px;
+   /*  margin: 2px 2px 2px 100px; */
     color: #FFFF00;
 }
 
 .card-body2 {
-    grid-area: card-body2;
-    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 2px;
+    /* margin: 2px; */
     color: #FFFF00;
 }
 
 .card-body3 {
-    grid-area: card-body3;
-    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 2px;
+    /* margin: 2px; */
     color: #FFFF00;
 }
 
-.volver {
-    grid-area: volver;
-    margin: 20px;
-}
 
 .card-img-top {
-    width: 450px;
-    height: 250px;
     padding-right: 15px;
     border-radius: 2%;
-}
-
-.subtitulo{
-    border: 2px solid #FFFF00;
-    padding: 5px;
 }

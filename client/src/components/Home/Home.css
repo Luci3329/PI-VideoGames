@@ -7,7 +7,7 @@
 .Videogames {
   color: hsla(0, 0%, 0%, .9);
   font: normal 90px Varela Round, sans-serif;
-  height: 90px;
+  /* height: 90px; */
   left: 0;
   letter-spacing: 5px;
   margin: 1% 0 2% 0;
@@ -15,9 +15,9 @@
   text-align: center;
   text-transform: uppercase;
   top: 50%;
-  width: 100%;
+  /* width: 100%; */
   animation: move linear 2000ms infinite
-}
+} 
 
 @keyframes move {
   0% {
@@ -88,20 +88,30 @@
 
 .form-select{
   background-color: transparent;
+
   border: thin solid;
   border-color:#FFFF00;
   width: 70%;
   margin: 5px;
+  color: #FFFF00;
   
   
 }
 
 .fuerte{
   color: #FFFF00;
+  opacity: 100%;
 }
 
+#floatingSelect{
+  color: blueviolet;
+  background-color: transparent;
+}
 
-
+.form-floating-label{
+  color: aqua;
+  opacity: 100%;
+}
 
 
 
