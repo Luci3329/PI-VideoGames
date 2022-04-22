@@ -15,10 +15,10 @@ export default function Card({ name, background_image, rating, genres }) {
                         <img src={background_image} class="otra" /* style={{ width: "220px", height:"160px" }}  */ alt={name} />
                         <h5 class="card-title text-center">{name}</h5>
 
-                        <div class="card-body">
+                        <div class="card-body mt-auto">
                             
                             <p class="card-text" style={{ fontSize: "15px" }} ><strong>Género/s: </strong><br />{genres.map(el => el.name).join(' - ')}</p>
-                            <p class="card-text" style={{ fontSize: "15px", paddingTop: "-15px" }} ><strong>Rating: </strong>{rating}</p>
+                            <p class="card-text" style={{ fontSize: "15px", paddingTop: "auto" }} ><strong>Rating: </strong>{rating}</p>
                         </div>
                     </div>
                 </div>

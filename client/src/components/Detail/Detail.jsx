@@ -25,14 +25,14 @@ export default function Detail(props) {
                     <h3 class="card-title">{myVideogame.name}</h3>
                 </div>
 
-                <div class="col-12 m-2 descripcion">
+                <div class="col-12 descripcion">
                     <div class="row">
-                        <div class="col-12 col-md-6 text-center">
+                        <div class="col-12 col-md-6 text-center m-auto">
                             <img src={myVideogame.background_image} class="card-img-top" align="left" alt="imagen" />
                         </div>
 
-                        <div class="col-12 col-md-6">
-                            <p class='texto' lang="es">{myVideogame.description}</p>
+                        <div class="col-12 col-md-6 text-center pt-auto">
+                            <p class='texto mt-3' lang="es">{myVideogame.description}</p>
                         </div>
 
                     </div>

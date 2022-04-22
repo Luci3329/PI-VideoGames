@@ -17,7 +17,7 @@ export default function Paginado({ gamesPorPag, allVideogames, paginado }) {
 
     return (
 
-        <nav className="Paginado" aria-label="Page navigation example">
+        <nav className="Paginado m-3" aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 {pagNum &&
                     pagNum.map(num => (

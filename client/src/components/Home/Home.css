@@ -1,20 +1,17 @@
-.btn {
-  width: 100px;
-}
 
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
 
 .Videogames {
   color: hsla(0, 0%, 0%, .9);
-  font: normal 90px Varela Round, sans-serif;
+  font: normal 70px Varela Round, sans-serif;
   /* height: 90px; */
-  left: 0;
+  /* left: 0; */
   letter-spacing: 5px;
-  margin: 1% 0 2% 0;
+  /* margin: 1% 0 2% 0; */
   position: static;
   text-align: center;
   text-transform: uppercase;
-  top: 50%;
+  /* top: 50%; */
   /* width: 100%; */
   animation: move linear 2000ms infinite
 } 
@@ -91,8 +88,8 @@
 
   border: thin solid;
   border-color:#FFFF00;
-  width: 70%;
-  margin: 5px;
+  /* width: 70%;
+  margin: 5px; */
   color: #FFFF00;
   
   

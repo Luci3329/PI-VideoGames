@@ -7,7 +7,7 @@
 
 .descripcion {
     align-items:center;
-    justify-content: center;
+    /* justify-content: center; */
     text-align: justify;
     /* margin: 20px; */
     color: #FFFF00;
@@ -15,7 +15,7 @@
 
 .card-body {
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     /* Arriba | Derecha | Abajo | Izquierda */
    /*  margin: 2px 2px 2px 100px; */
     color: #FFFF00;
@@ -23,14 +23,14 @@
 
 .card-body2 {
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     /* margin: 2px; */
     color: #FFFF00;
 }
 
 .card-body3 {
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     /* margin: 2px; */
     color: #FFFF00;
 }

@@ -94,25 +94,35 @@ export default function Home() {
             </div>
 
             <br />
-            <div className='conteiner games'>
-                <div class="row">
-                    <div class='col-8  col-md-12 display-1 display-md-3 display-lg-4'>
-                        <h1 className='Videogames'>Videogames</h1>
-                    </div>
+            <div className='conteiner'> {/* **** EN PANTALLAS PEQUEÑAS SE DIVIDE LA PALABRA **** */}
+                <div className="row">
+
+                    <div class='Videogames d-md-none col-12 mx-auto'>Video</div>
+                    <div class='Videogames d-md-none col-12 mx-auto'>Games</div>
+
                 </div>
             </div>
+
+            <div className='conteiner'> {/* **** EN PANTALLAS GRANDES SE MUESTRA ENTERA **** */}
+                <div className="row">
+
+                    <div class='Videogames d-none d-md-block col-md-6 mx-auto mx-md-auto'>Videogames</div>
+
+                </div>
+            </div>
+
             <br />
 
-            <div class="container">
-                <div class="row g-4">
+            <div class="conteiner ">
+                <div class="row">
 
-                    <div class="col-md-3">
+                    <div class="col-12 col-md-4">
                         <div class="form-floating">
                             <select class="form-select"
                                 id="floatingSelect"
                                 aria-label="Floating label select example"
                                 onChange={e => handleFilterByCreated(e)}>
-                                {/* <option selected>Todos Los Juegos</option> */}
+                                <option selected>Todos Los Juegos</option>
                                 <option value="1">Todos Los Juegos</option>
                                 <option value="2">Creaciones</option>
                             </select>
@@ -120,13 +130,13 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-12 col-md-4">
                         <div class="form-floating">
                             <select class="form-select"
                                 id="floatingSelect"
                                 aria-label="Floating label select example"
                                 onChange={e => handleFilterByGenres(e)}>
-                                {/* <option value="4">Todos Los Géneros</option> */}
+                                <option value="4">Todos Los Géneros</option>
                                 {sortGenres &&
                                     sortGenres.map(el => (
                                         <option
@@ -137,31 +147,32 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-12 col-md-4">
 
-                        <button type="button"
-                            class="btn"
-                            style={{ width: "70%" }}
-                            value={sort}
-                            onClick={(e) => handleSort(e)}
-                        >{sort}</button>
+                        <div class="form-floating d-flex">
 
-                        {sort === "Orden Por Juego" ? (
+                            <button type="button"
+                                class="btn"
+                                value={sort}
+                                onClick={(e) => handleSort(e)}
+                            >{sort}</button>
 
-                            <SortSelect
-                                handleSort={orderGame}
-                                sortDescription="Orden Alfabético"
-                            />
+                            {sort === "Orden Por Juego" ? (
 
-                        ) : (
+                                <SortSelect
+                                    handleSort={orderGame}
+                                    sortDescription="Orden Alfabético"
+                                />
 
-                            <SortSelect
-                                handleSort={orderRating}
-                                sortDescription="Orden Alfabético"
-                            />
+                            ) : (
 
-                        )}
+                                <SortSelect
+                                    handleSort={orderRating}
+                                    sortDescription="Orden Alfabético"
+                                />
 
+                            )}
+                        </div>
                     </div>
 
                 </div>

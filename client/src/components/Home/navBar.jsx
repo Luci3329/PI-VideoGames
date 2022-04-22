@@ -47,20 +47,20 @@ export default function NavLuci() {
                 <div class="collapse navbar-collapse" id="navbarScroll">
 
                     
-                    <div class="nav ms-auto flex-colum flex-md-row ">
-                        <div class="row  g-3">
+                    <div class="nav ms-auto d-flex flex-colum flex-md-row ">
+                        <div class="row d-flex justify-content-between">
 
-                            <div class="col-12 col-md-8">
+                            <div class="col-12 col-md-4">
                                 <Link to='/videogame'>
                                 <button class="btn btn-light w-100 p-2" type='submit'>Crea Tu Videojuego</button></Link>
 
                             </div>
 
-                            <div class="col-12 col-md-1">
+                            <div class="col-12 col-md-2">
                                 <a class="nav-link" href="#" onClick={e => handleClick(e)}>Refrescar</a>
                             </div>
 
-                            <div class="col-12 col-md-3 justify-content-end">
+                            <div class="col-12 col-md-6">
                                 <form class="d-flex">
                                     <input class="form-control me-2 w-auto p-2"
                                         type="search" placeholder="Cuál es tu juego? "
