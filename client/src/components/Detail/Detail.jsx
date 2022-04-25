@@ -22,16 +22,16 @@ export default function Detail(props) {
             <div class='row titulo'>
 
                 <div class="col-12 m-2">
-                    <h3 class="card-title">{myVideogame.name}</h3>
+                    <h3 class="title">{myVideogame.name}</h3>
                 </div>
 
                 <div class="col-12 descripcion">
                     <div class="row">
-                        <div class="col-12 col-md-6 text-center m-auto">
+                        <div class="col-12 col-md-6 text-center m-auto img">
                             <img src={myVideogame.background_image} class="card-img-top" align="left" alt="imagen" />
                         </div>
 
-                        <div class="col-12 col-md-6 text-center pt-auto">
+                        <div class="col-12 col-md-6 text-center pt-auto desc">
                             <p class='texto mt-3' lang="es">{myVideogame.description}</p>
                         </div>
 
@@ -39,10 +39,10 @@ export default function Detail(props) {
                 </div>
 
 
-                <div class="col-12">
+                <div class="col-12 mt-4">
                     <div class="row">
 
-                        <div class="col-12 col-md-4 mt-3 card-body">
+                        <div class="col-12 col-md-4 card-body">
 
                             <p class="card-text">
                                 <h6 class='subtitulo'>Fecha de Lanzamiento</h6>
@@ -53,18 +53,18 @@ export default function Detail(props) {
                                 <span>{myVideogame.rating}</span></p>
                         </div>
 
-                        <div class='col-12 col-md-4 mt-3 card-body2'>
-                            <ul class="card-text">
+                        <div class='col-12 col-md-4 card-body2'>
+                            <ul class="list-inline">
                                 <h6 class='subtitulo'>Plataformas</h6>
                                 {
                                     myVideogame.platforms &&
                                     myVideogame.platforms?.map(elem => <li className='lista' key={elem}><span className='viñ'>{elem}</span></li>)
-                                }
+                                }  
                             </ul>
                         </div>
 
-                        <div class='col-12 col-md-4 mt-3 card-body3'>
-                            <ul class="card-text">
+                        <div class='col-12 col-md-4 card-body3'>
+                            <ul class="list-inline">
                                 <h6 class='subtitulo'>Géneros</h6>
                                 {
                                     myVideogame.genres &&
@@ -75,7 +75,7 @@ export default function Detail(props) {
                     </div>
                 </div>
 
-                <div class='col-12 mt-4 volver'>
+                <div class='col-12 mt-4'>
                     <Link to='/home'>
                         <button class="btn btn-light" type="button">Volver</button></Link>
                 </div>
