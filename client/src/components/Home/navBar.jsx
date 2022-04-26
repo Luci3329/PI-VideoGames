@@ -38,19 +38,19 @@ export default function NavLuci() {
 
         <nav class="navbar navbar-expand-md navbar-light .bg-transparent">
 
-            <div class="container-fluid">
+            <div class="container-fluid m-auto">
                 <a class="navbar-brand">-Luci App- </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarScroll">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     
-                    <div class="nav ms-auto d-flex flex-colum flex-md-row ">
-                        <div class="row d-flex justify-content-between">
+                    <div class="nav ms-auto d-md-flex flex-colum flex-md-row ">
+                        <div class="row d-md-flex justify-content-between">
 
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 my-3 col-md-4 my-md-0">
                                 <Link to='/videogame'>
                                 <button class="btn btn-light w-100 p-2" type='submit'>Crea Tu Videojuego</button></Link>
 
@@ -58,10 +58,10 @@ export default function NavLuci() {
 
                             <div class="col-12 col-md-2">
                                 <a class="nav-link" href="#" onClick={e => handleClick(e)}>Refrescar</a>
-                            </div>
+                            </div> 
 
                             <div class="col-12 col-md-6">
-                                <form class="d-flex">
+                                <form class="d-flex justify-content-center">
                                     <input class="form-control me-2 w-auto p-2"
                                         type="search" placeholder="Cuál es tu juego? "
                                         aria-label="Search"

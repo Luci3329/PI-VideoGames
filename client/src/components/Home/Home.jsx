@@ -113,7 +113,7 @@ export default function Home() {
 
             <br />
 
-            <div class="conteiner ">
+            <div class="container">
                 <div class="row">
 
                     <div class="col-12 col-md-4">
@@ -152,7 +152,7 @@ export default function Home() {
                         <div class="form-floating d-flex">
 
                             <button type="button"
-                                class="btn"
+                                class="btn flex-fill"
                                 value={sort}
                                 onClick={(e) => handleSort(e)}
                             >{sort}</button>

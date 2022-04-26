@@ -6,9 +6,49 @@
     display: block;
 }
 
+#basic-addon1{
+    background: transparent;
+    color: #FFFF00;
+    border: solid;
+    border-color: #FFFF00;
+}
 
+.option{
+    color: #FFFF00;
+}
 
+option{
+    background: black;
+    background-color: black;
+    color: blue;
+}
 
+.cerrar{
+    padding: 3px;
+}
+
+.volver{
+    font-weight: 700;
+    font-size: x-large;
+    
+}
+
+.luci{
+    color: #FFFF00;
+    background: black;
+    padding: 15px;
+}
+
+.error{
+    color: #FFFF00;
+    font-weight: 400;
+    padding: 10px;
+}
+
+/* .btn-close{
+    color: #FFFF00;
+    background: black;
+} */
 
 
 
@@ -30,16 +70,12 @@
 label{
     color: white;
     font-weight: 600;
-}
+} */
 
 .crea{
-    color: white;
-    background: linear-gradient(
-        180deg,#fd867d,#b1305c);
-        border-radius: 15px;
+    color: #FFFF00;
     font-weight: 900;
-    margin: revert;
-    font-size: -webkit-xxx-large; 
+    margin: revert; 
     margin: 30px;
     margin-top: auto;
-} */
+}

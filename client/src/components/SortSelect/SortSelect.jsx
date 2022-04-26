@@ -3,7 +3,7 @@ import React from "react";
 export default function SortSelect({ sortDescription, handleSort }) {
   return (
     
-          <div class="form-floating">
+          <div class="form-floating flex-fill">
             <select class="form-select"
               id="floatingSelect"
               aria-label="Floating label select example"

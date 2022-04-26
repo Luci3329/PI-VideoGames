@@ -1,6 +1,11 @@
 .navbar{
     border: thin solid;
     border-color:#FFFF00;
+   
+}
+
+#navbarScroll{
+    scroll-margin: 10px;
 }
 
 .navbar-brand{
@@ -43,7 +48,6 @@
 }
 
 .navbar-toggler-icon{
-    background-color: #FFFF00;
-    
+    background-color: #FFFF00;    
 }
     

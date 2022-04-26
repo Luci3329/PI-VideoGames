@@ -12,7 +12,7 @@ export default function Card({ name, background_image, rating, genres }) {
                 <div class="todo col-md-2">
                     < div class="card" style={{ width: "15rem", height: "22em" }} >
 
-                        <img src={background_image} class="otra" /* style={{ width: "220px", height:"160px" }}  */ alt={name} />
+                        <img src={background_image} class="otra" alt={name} />
                         <h5 class="card-title text-center">{name}</h5>
 
                         <div class="card-body mt-auto">
@@ -31,15 +31,5 @@ export default function Card({ name, background_image, rating, genres }) {
     )
 
 }
-
-
-{/* <div className='card'>
-
-            <h2 className='namet' >{name}</h2>
-            <img className='img' src={background_image} alt={name} width='200px' height='160px' />
-            <h5>Género: {genres.map(el => el + ' / ')}</h5>
-            <h5>Rating: {rating}</h5>
-
-        </div> */}
 
 

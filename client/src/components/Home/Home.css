@@ -84,15 +84,32 @@
 
 
 .form-select{
-  background-color: transparent;
-
+  
   border: thin solid;
   border-color:#FFFF00;
-  /* width: 70%;
-  margin: 5px; */
+  color: #FFFF00; 
+}
+
+/* .form-floating .form-select:hover{
+  background: transparent ;
+  color: aqua;
+} */
+
+/* .form-floating:focus,.form-floating:hover{
+  font-weight: 600;
   color: #FFFF00;
-  
-  
+  background: aqua;
+  border: #FFFF00;
+  box-shadow: 0 0 4px 3px #FFFF00;
+}  */
+
+.form-floating .form-select:focus:hover{
+  background: transparent;
+  color: transparent;
+}
+
+#floatingSelect:hover{
+  background: transparent;
 }
 
 .fuerte{
@@ -101,12 +118,12 @@
 }
 
 #floatingSelect{
-  color: blueviolet;
-  background-color: transparent;
+  color: blue;
+  background: transparent;
 }
 
 .form-floating-label{
-  color: aqua;
+  color: blue;
   opacity: 100%;
 }
 

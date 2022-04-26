@@ -6,17 +6,29 @@ import './NewGame.css';
 
 
 function validacion(input) {
-
     let errors = {};
-    let nameTest = /^[a-zA-ZA-y\s]{3,80}$/; // solo letras, de 3 a 80 caracteres
 
-    if (!input.name) errors.name = 'Required Field'
-    else if (!nameTest.test(input.name.trim())) errors.name = 'This Field Only Supports Letters ( 3 - 80 )'
-    else if (!input.difficulty) errors.difficulty = 'Required Field'
-    else if (input.difficulty < 1 || input.difficulty > 5) errors.difficulty = 'You must put a number between 1 and 5'
-    else if (!input.pais) errors.pais = 'Required Field'
-    return errors
+    if (!input.name) errors.name = 'Se requiere un nombre';
+    if (!input.description) errors.description = 'Se requiere descripción';
+    if (input.rating < 0.1 || input.rating > 5) errors.rating = 'Debes seleccionar un número ente 0.1 y 5';
+    if (!input.platforms) errors.platforms = 'Se requiere al menos una Plataforma';
+    else if (!input.genres) errors.genres = 'Se requiere al menos un Género';
+
+    return errors;
 }
+
+/* // ---------------- PARA DESHABILITAR EL BOTÓN "CREAR VIDEOJUEGO" SI TENEMOS ALGÚN ERROR -------
+function validarForm(errors) {
+    let validate = true;
+
+    Object.values(errors).forEach(val => val.lenght > 0 && (validate = false));
+
+    if (validate) {
+        setErrors({
+            disabled: true
+        })
+    }
+} */
 
 export default function NewGame() {
 
@@ -26,6 +38,8 @@ export default function NewGame() {
     const genres = useSelector(state => state.genres)
     //console.log(genres) // arreglo de strings
     const platforms = useSelector(state => state.platforms)
+
+    const [errors, setErrors] = useState({})
 
     const [input, setInput] = useState({
         name: '',
@@ -38,13 +52,15 @@ export default function NewGame() {
 
     })
 
-
-    // acá guardo las cosas q el usuario va escribiendo -> estado local input
     function handleChange(e) {
         setInput({
             ...input,
             [e.target.name]: e.target.value
         }) // DINÁMICO -> va a ir tomando los valores de los inputs y los va modificando según lo escrito
+        setErrors(validacion({
+            ...input,
+            [e.target.name]: e.target.value
+        }));
     }
 
     function handleSelectGenres(e) {
@@ -63,8 +79,7 @@ export default function NewGame() {
 
 
     function handleSubmit(e) {
-        e.preventDefault()
-        //console.log(input);
+        e.preventDefault();
         dispatch(postVideogames(input))
         alert('Juego Creado Exitosamente!')
         setInput({   // para q al terminar me deje todos los input en blanco nuevamente
@@ -94,17 +109,17 @@ export default function NewGame() {
         })
     }
 
-// ---------------- PARA ESTABLECER COMO MÍNIMO LA FECHA ACTUAL EN EL CALENDARIO
+    // ---------------- PARA ESTABLECER COMO MÍNIMO LA FECHA ACTUAL EN EL CALENDARIO
     let fechaActual = new Date();
     let año = fechaActual.getFullYear();
     let dia = fechaActual.getDate();
     let mes = fechaActual.getMonth() + 1; // xq Enero es 0
 
-    dia = ( '0' + dia ).slice(-2); 
-    mes = ( '0' + mes ).slice(-2); 
+    dia = ('0' + dia).slice(-2);
+    mes = ('0' + mes).slice(-2);
 
-   const hoy = `${año}-${mes}-${dia}`
-// ----------------------------------------------------------------------------------
+    const hoy = `${año}-${mes}-${dia}`
+    // ----------------------------------------------------------------------------------
 
     useEffect(() => {  // cuando el componente se monte -> traigo todo
         dispatch(listGenres())
@@ -133,6 +148,10 @@ export default function NewGame() {
                         value={input.name}
                         name='name'
                         onChange={e => handleChange(e)} />
+
+                    {errors.name && (
+                        <p class="error">{errors.name}</p>
+                    )}
                     <label for="floatingInput">Nombre</label>
                 </div>
 
@@ -145,6 +164,10 @@ export default function NewGame() {
                         name='description'
                         style={{ height: "100px" }}
                         onChange={e => handleChange(e)} />
+
+                    {errors.description && (
+                        <p class="error">{errors.description}</p>
+                    )}
                     <label for="floatingTextarea2">Descripcion</label>
                 </div>
 
@@ -190,6 +213,10 @@ export default function NewGame() {
                         aria-describedby="basic-addon1"
                         onChange={e => handleChange(e)} />
 
+                    {errors.rating && (
+                        <p class="error">{errors.rating}</p>
+                    )}
+
                 </div>
 
 
@@ -203,8 +230,13 @@ export default function NewGame() {
                             platforms?.map((platform) => {
                                 return <option value={platform} key={platform} name="platforms"> {platform} </option>
                             })}
+
+                        {errors.platforms && (
+                            <p class="error">{errors.platforms}</p>
+                        )}
+
                     </select>
-                    <label for="floatingSelect">Seleccione Plataforma/s</label>
+                    <label class="option" for="floatingSelect">Seleccione Plataforma/s</label>
                 </div>
 
 
@@ -218,8 +250,13 @@ export default function NewGame() {
                                 return <option value={genre} key={genre}> {genre} </option>
                             })
                         }
+
+                        {errors.genres && (
+                            <p class="error">{errors.genres}</p>
+                        )}
+
                     </select>
-                    <label for="floatingSelect">Seleccione Género/s</label>
+                    <label class="option" for="floatingSelect">Seleccione Género/s</label>
                 </div>
 
 
@@ -228,12 +265,11 @@ export default function NewGame() {
                         input.genres.map(el => {
                             return (
                                 <div class="col-sm-3">
-                                    <div class="card-body">
-                                        <h5 class="card-title" key={el}>{el}</h5>
+                                    <div class="luci">
+                                        <h5 class="ventana" key={el}>{el}</h5>
                                         <button type="button"
-                                            class="btn-close"
-                                            aria-label="Close"
-                                            onClick={() => handleDeleteGenre(el)} ></button>
+                                            class="btn cerrar"
+                                            onClick={() => handleDeleteGenre(el)} >Eliminar</button>
 
                                     </div>
                                 </div>
@@ -248,12 +284,11 @@ export default function NewGame() {
                             input.platforms.map(el => {
                                 return (
                                     <div class="col-sm-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title" key={el}>{el}</h5>
+                                        <div class="luci">
+                                            <h5 class="ventana" key={el}>{el}</h5>
                                             <button type="button"
-                                                class="btn-close"
-                                                aria-label="Close"
-                                                onClick={() => handleDeletePlatform(el)}></button>
+                                                class="btn cerrar"
+                                                onClick={() => handleDeletePlatform(el)}>Eliminar</button>
 
                                         </div>
                                     </div>
@@ -268,12 +303,14 @@ export default function NewGame() {
 
                 <div class="row">
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <Link to='/home'> <button class="btn btn-link">Volver</button></Link><br />
+                        <Link to='/home'> <a class="nav-link volver" href="#">Volver</a></Link><br />
 
                     </div>
 
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-light w-auto p-3" type='submit'>Crear Juego</button><br /><br />
+                        <button class="btn btn-light w-auto p-2" 
+                        disabled={errors.name || errors.description || errors.rating || errors.platforms || errors.genres}
+                        type='submit'>Crear Juego</button><br /><br />
                     </div>
                 </div>
 

@@ -5,8 +5,8 @@ import './LandingPage.css'
 
 export default function LandingPage() {
     return (
-        <div class="container-fluid h-100 my-5">
-            <div class="row w-100 align-items-center justify-content-center text-center">
+        
+            <div class="landing d-flex align-items-center justify-content-center text-center">
 
                 <div class="col-12 text-center text">
 
@@ -18,6 +18,6 @@ export default function LandingPage() {
                 </div>
 
             </div>
-        </div>
+        
     )
 }

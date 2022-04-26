@@ -8,7 +8,7 @@ a:link {text-decoration:none}
     fill-opacity: inherit;
     background: transparent;
     
-}
+} 
 
 .card-title{
     /* Arriba | Derecha | Abajo | Izquierda */
@@ -23,14 +23,10 @@ a:link {text-decoration:none}
     justify-content: center;
     grid-template-columns: repeat(auto-fill, 12rem);
     gap: 4rem;
-    padding: 20px 0 20px -20px;
+   
     text-align: center;
 }
 
-.row{
-    border: 20px;
-    /* border: 20px 0 20px 0; */
-}
 
 .otra{
     width: 230px;

@@ -1,16 +1,5 @@
 
 
-.container-fluid {
-    display: flex;
-    justify-content: center; 
-}
-
-
-/* .text{
-    position:relative;
-    align-items: center;
-    
-} */
 
 .text h1{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
