@@ -1,28 +1,24 @@
-.navbar{
+/* .rectangulo{
     border: thin solid;
     border-color:#FFFF00;
    
+} */
+
+.navbar-nav{
+    margin-left: auto;
 }
 
-#navbarScroll{
-    scroll-margin: 10px;
+.nav-link{  /*  ------ REFRESCAR --------- */
+    color: black;
+    font-weight: 500;
 }
 
-.navbar-brand{
-    color: #FFFF00;
-    background-color: #FFFF00;
-    
-}
-
-.nav-link{
-    color: #FFFF00;
-}
 
 .btn{
     background-color:#FFFF00;
     color: black;
     border: thin solid;
-    border-color:#FFFF00;
+    border-color:black;
     font-weight: 600; 
 }
 
@@ -36,18 +32,15 @@
     background-color:#FFFF00;
     color: black;
     border: thin solid;
-    border-color:#FFFF00;
+    border-color:black;
 }
 
 .form-control:hover,.form-control:focus{
-    font-weight: 600;
+    font-weight: 200;
     color: #FFFF00;
-    background-color:transparent;
-    border: blue;
-    box-shadow: 0 0 4px 3px blue;
+    background-color:black;
+    border: black;
+    /* box-shadow: 0 0 4px 3px blue; */
 }
 
-.navbar-toggler-icon{
-    background-color: #FFFF00;    
-}
-    
+   

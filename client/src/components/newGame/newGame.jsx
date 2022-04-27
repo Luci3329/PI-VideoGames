@@ -134,7 +134,7 @@ export default function NewGame() {
 
         <div className='principal'>
 
-            <h2 className='crea'>Crea tu Videojuego!</h2><br />
+            <h2 className='crea text-center'>Crea tu Videojuego!</h2>
 
             <form enctype="multipart/form-data"  // para poder adjuntar archivos
                 onSubmit={e => handleSubmit(e)}>

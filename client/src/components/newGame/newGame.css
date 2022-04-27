@@ -30,6 +30,7 @@ option{
 .volver{
     font-weight: 700;
     font-size: x-large;
+    color: blue;
     
 }
 
@@ -44,33 +45,6 @@ option{
     font-weight: 400;
     padding: 10px;
 }
-
-/* .btn-close{
-    color: #FFFF00;
-    background: black;
-} */
-
-
-
-
-/* .boton{
-    width: auto;
-    min-width: 150px;
-    padding: 5px 10px;
-    background-color: hsla(0,0%,100%,.07);
-    border-radius: 8px;
-    font-size: 14px;
-    color: #fff;
-    font-weight: 600;
-   cursor: pointer;
-    margin: 30px;
-    margin-top: 36px;
-}
-
-label{
-    color: white;
-    font-weight: 600;
-} */
 
 .crea{
     color: #FFFF00;

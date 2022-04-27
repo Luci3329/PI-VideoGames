@@ -1,27 +1,17 @@
-
-.titulo {
-    align-items: center;
-    justify-content: center;
+.ancho{
     color: #FFFF00;
-    
-}
-
-.title{
-    border: 3px solid #FFFF00;
-   
-    
 }
 
 .subtitulo{
-    color: #FFFF00;
     font-size: x-large;
 }
 
-.descripcion {
-    align-items:center;
-    text-align: justify;
-    color: #FFFF00;
+.name{
+    font-weight: 700;
 }
+
+
+
 
 
 

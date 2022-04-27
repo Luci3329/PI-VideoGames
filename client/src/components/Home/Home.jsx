@@ -87,7 +87,7 @@ export default function Home() {
 
 
     return (
-        <div className='home'>
+        <div className="app">
 
             <div>
                 <NavLuci />
@@ -150,7 +150,7 @@ export default function Home() {
                     <div class="col-12 col-md-4">
 
                         <div class="form-floating d-flex">
-
+ 
                             <button type="button"
                                 class="btn flex-fill"
                                 value={sort}
@@ -186,18 +186,12 @@ export default function Home() {
             />
             <br />
 
-
-
-            <div>
                 {
                     allVideogames === "VideoGame no encontrado" ? <Error /> :
 
                         <CardList games={gamesPagActual} />
                 }
-            </div>
-
-
-
+            
         </div >
     )
 }

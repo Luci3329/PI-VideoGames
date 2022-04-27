@@ -8,7 +8,7 @@ export default function SortSelect({ sortDescription, handleSort }) {
               id="floatingSelect"
               aria-label="Floating label select example"
               onChange={handleSort}>
-              <option selected>{sortDescription}</option>
+              {/* <option selected>{sortDescription}</option> */}
               <option value="asc">Ascendente</option>
               <option value="desc">Descendente</option>
             </select>
